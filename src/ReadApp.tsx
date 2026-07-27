@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import SiteNav from "./components/SiteNav";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import ReadingDemo from "./components/ReadingDemo";
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <div className="page">
       <div className="grain" aria-hidden="true" />
+      <SiteNav current="read" />
       <Hero />
       <HowItWorks />
 
