@@ -60,6 +60,7 @@ export interface DemoStep {
   transcript?: string; // what Maya says out loud
   correct?: boolean;
   audio?: string; // pre-recorded clip in public/audio, played when sound is on
+  say?: string; // the script that clip was recorded from, kept for regeneration
   states: Record<string, NodeState>; // node id -> state (unlisted = dim)
   trail?: MapEdge[]; // edges to trace as the because-trail
   activity?: { before: string; after: string };
@@ -75,6 +76,7 @@ export const STEPS: DemoStep[] = [
     body: "Press play to hear her read three short words aloud. Axial listens to how she works out each word.",
     states: {},
     audio: "s0-intro",
+    say: "Let's read three words together. Take your time.",
   },
   {
     kicker: "Word 1 of 3",
@@ -82,6 +84,7 @@ export const STEPS: DemoStep[] = [
     body: "Maya reads it cleanly, sound by sound. She knows her letter sounds. That part is solid.",
     word: "cat",
     transcript: "/k/ … /a/ … /t/ … cat!",
+    say: "c... a... t. Cat!",
     correct: true,
     audio: "s1-cat",
     states: { letters: "mastered", hearing: "mastered" },
@@ -91,7 +94,8 @@ export const STEPS: DemoStep[] = [
     title: "“sun”",
     body: "She says every sound right, then guesses the word from the first letter. The sounds are there. They slip away before she can join them.",
     word: "sun",
-    transcript: "/s/ … /u/ … um … snake?",
+    transcript: "/s/ … /u/ … /n/ … um … “snake?”",
+    say: "s... u... n... um... snake?",
     correct: false,
     audio: "s2-sun",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck" },
@@ -99,9 +103,10 @@ export const STEPS: DemoStep[] = [
   {
     kicker: "Word 3 of 3",
     title: "“map”",
-    body: "The same pattern. Clear sounds, then they scatter before the word comes together. Two data points now say the same thing.",
+    body: "Every sound correct again, and then she asks for the first one back. That is the tell. The sounds are not missing. They fall out of memory before she can join them.",
     word: "map",
-    transcript: "/m/ … /a/ … it's gone.",
+    transcript: "/m/ … /a/ … /p/ … wait, what was the first one?",
+    say: "m... a... p... wait, what was the first sound again?",
     correct: false,
     audio: "s3-map",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck" },
@@ -126,6 +131,7 @@ export const STEPS: DemoStep[] = [
       after: "Join two sounds:  s + un  →  “sun”",
     },
     audio: "s5-adapt",
+    say: "This time, just two pieces. Ss... un. Sun!",
   },
   {
     kicker: "What the parent sees",

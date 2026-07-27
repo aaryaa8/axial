@@ -36,12 +36,15 @@ const VOICES = {
   tutor: process.env.VOICE_TUTOR || "",
 };
 
+// Maya says every sound correctly and still cannot reach the word. That is the
+// point: it rules out "she doesn't know her letters" in the first two seconds,
+// which is what makes the bottleneck diagnosis land.
 const CLIPS = [
-  { file: "s0-intro", who: "tutor", text: "Let's read three words together." },
-  { file: "s1-cat", who: "maya", text: "c... a... t... cat!" },
-  { file: "s2-sun", who: "maya", text: "s... u... um... snake?" },
-  { file: "s3-map", who: "maya", text: "m... a... it's gone." },
-  { file: "s5-adapt", who: "tutor", text: "Let's join just two sounds. Ss, un. Sun." },
+  { file: "s0-intro", who: "tutor", text: "Let's read three words together. Take your time." },
+  { file: "s1-cat", who: "maya", text: "c... a... t. Cat!" },
+  { file: "s2-sun", who: "maya", text: "s... u... n... um... snake?" },
+  { file: "s3-map", who: "maya", text: "m... a... p... wait, what was the first sound again?" },
+  { file: "s5-adapt", who: "tutor", text: "This time, just two pieces. Ss... un. Sun!" },
 ];
 
 async function listVoices(key) {
