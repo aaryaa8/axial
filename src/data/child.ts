@@ -18,8 +18,8 @@ export interface MapNode {
   label: string;
   sub?: string; // technical term, shown small + mono
   layer: Layer;
-  x: number; // in a 0..100 x, 0..66 y viewBox
-  y: number;
+  x: number; // percent across the plot
+  age?: string; // reading band only: the typical age this skill lands
 }
 
 export interface MapEdge {
@@ -27,17 +27,30 @@ export interface MapEdge {
   to: string;
 }
 
+// The two bands, as a percentage of plot height. Labels sit on the OUTER side
+// of each band (reading above its dots, cognitive below), which keeps the
+// middle corridor free for edges so no line ever crosses a word.
+export const BAND_Y: Record<Layer, number> = { reading: 41, cognitive: 75 };
+
+// Reading skills are ordered left to right by the age they typically arrive,
+// following Chall's stages and Ehri's phases. That makes position meaningful:
+// the map is a developmental timeline, not an arbitrary scatter.
 export const NODES: MapNode[] = [
-  // Graph A — reading skills (top band)
-  { id: "letters", label: "Letter sounds", layer: "reading", x: 17, y: 17 },
-  { id: "blending", label: "Blending", layer: "reading", x: 41, y: 14 },
-  { id: "words", label: "Reading words", layer: "reading", x: 66, y: 18 },
-  { id: "fluency", label: "Fluent reading", layer: "reading", x: 87, y: 25 },
-  // Graph B — cognitive capacities (lower band)
-  { id: "hearing", label: "Hearing sounds", sub: "phonemic awareness", layer: "cognitive", x: 21, y: 49 },
-  { id: "holding", label: "Holding sounds in mind", sub: "phonological working memory", layer: "cognitive", x: 46, y: 52 },
-  { id: "attention", label: "Staying with it", sub: "sustained attention", layer: "cognitive", x: 71, y: 47 },
+  // Graph A — the reading sequence (top band)
+  { id: "letters", label: "Letter sounds", layer: "reading", x: 12, age: "4–5" },
+  { id: "blending", label: "Blending", layer: "reading", x: 37, age: "5–6" },
+  { id: "words", label: "Reading words", layer: "reading", x: 63, age: "6–7" },
+  { id: "fluency", label: "Fluent reading", layer: "reading", x: 88, age: "7–9" },
+  // Graph B — the capacities underneath (lower band), each under what it feeds
+  { id: "hearing", label: "Hearing sounds", sub: "phonemic awareness", layer: "cognitive", x: 12 },
+  { id: "holding", label: "Holding sounds in mind", sub: "phonological working memory", layer: "cognitive", x: 37 },
+  { id: "attention", label: "Staying with it", sub: "sustained attention", layer: "cognitive", x: 66 },
 ];
+
+// Where the demo child sits on that timeline. At six she is in the move from
+// guessing at words to sounding them out fully, which is exactly the phase
+// Ehri describes and exactly where blending decides everything downstream.
+export const AGE_MARKER = { x: 50, label: "Maya · 6" };
 
 export interface DemoStep {
   kicker: string;
@@ -46,7 +59,7 @@ export interface DemoStep {
   word?: string;
   transcript?: string; // what Maya says out loud
   correct?: boolean;
-  speak?: string; // spoken aloud via the browser if sound is on
+  audio?: string; // pre-recorded clip in public/audio, played when sound is on
   states: Record<string, NodeState>; // node id -> state (unlisted = dim)
   trail?: MapEdge[]; // edges to trace as the because-trail
   activity?: { before: string; after: string };
@@ -61,7 +74,7 @@ export const STEPS: DemoStep[] = [
     title: "Meet Maya. She is six, and she is learning to read.",
     body: "Press play to hear her read three short words aloud. Axial listens to how she works out each word.",
     states: {},
-    speak: "Let's read three words.",
+    audio: "s0-intro",
   },
   {
     kicker: "Word 1 of 3",
@@ -70,7 +83,7 @@ export const STEPS: DemoStep[] = [
     word: "cat",
     transcript: "/k/ … /a/ … /t/ … cat!",
     correct: true,
-    speak: "cat",
+    audio: "s1-cat",
     states: { letters: "mastered", hearing: "mastered" },
   },
   {
@@ -80,7 +93,7 @@ export const STEPS: DemoStep[] = [
     word: "sun",
     transcript: "/s/ … /u/ … um … snake?",
     correct: false,
-    speak: "sss, uh, snake?",
+    audio: "s2-sun",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck" },
   },
   {
@@ -90,7 +103,7 @@ export const STEPS: DemoStep[] = [
     word: "map",
     transcript: "/m/ … /a/ … it's gone.",
     correct: false,
-    speak: "mmm, ah…",
+    audio: "s3-map",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck" },
   },
   {
@@ -112,7 +125,7 @@ export const STEPS: DemoStep[] = [
       before: "Sound out the whole word:  s · u · n",
       after: "Join two sounds:  s + un  →  “sun”",
     },
-    speak: "Let's join two sounds. Ssss — un. Sun.",
+    audio: "s5-adapt",
   },
   {
     kicker: "What the parent sees",

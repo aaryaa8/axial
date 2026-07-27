@@ -260,7 +260,7 @@ a { color: inherit; }
 /* ---------- demo ---------- */
 .demo-shell {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.2fr);
   gap: clamp(24px, 4vw, 52px);
   align-items: stretch;
 }
@@ -273,80 +273,170 @@ a { color: inherit; }
   align-items: center;
 }
 
-.map { position: relative; width: 100%; aspect-ratio: 100 / 66; }
-.map-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.map-edge { stroke: var(--ink-dim); stroke-width: 0.3; transition: all 0.4s ease; }
+.map { position: relative; width: 100%; aspect-ratio: 100 / 72; }
+.map-svg { position: absolute; inset: 0; z-index: 2; overflow: visible; }
+.map-edge { stroke: var(--ink-dim); stroke-width: 1.1; transition: stroke 0.4s ease; }
 .map-edge--trail {
   stroke: var(--ink);
-  stroke-width: 0.6;
+  stroke-width: 1.7;
   stroke-linecap: round;
-  stroke-dasharray: 120;
-  stroke-dashoffset: 120;
-  animation: draw 1s ease forwards;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw 0.9s ease forwards;
 }
 
-.map-band-label {
+/* developmental age axis */
+.map-axis {
   position: absolute;
   left: 0;
+  right: 0;
+  top: 13%;
+  border-top: 1px solid var(--rule);
+}
+.map-axis-cap {
+  position: absolute;
+  left: 0;
+  top: 15.5%;
   font-family: var(--mono);
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-dim);
-  z-index: 2;
 }
-.map-band-top { top: -3%; }
-.map-band-bottom { bottom: -5%; }
+.map-age {
+  position: absolute;
+  top: 4%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.map-tick {
+  position: absolute;
+  left: 50%;
+  top: 125%;
+  width: 1px;
+  height: 6px;
+  background: var(--ink-dim);
+}
 
+/* where this child sits on the timeline */
+.maya-marker {
+  position: absolute;
+  top: 13%;
+  bottom: 2%;
+  width: 0;
+  border-left: 1px dashed var(--rule);
+  z-index: 1;
+}
+.maya-marker-label {
+  position: absolute;
+  top: -2.2em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  background: var(--white);
+  padding: 0 0.4rem;
+  white-space: nowrap;
+}
+
+/* boundary between the two graphs */
+.band-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58%;
+  border-top: 1px solid var(--bg-warm);
+  z-index: 0;
+}
+.band-cap {
+  position: absolute;
+  right: 0;
+  font-family: var(--mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  background: var(--white);
+  padding-left: 0.5rem;
+  z-index: 3;
+}
+.band-cap--top { top: 51%; }
+.band-cap--bottom { top: 60%; }
+
+/* nodes: a zero-size anchor at the exact dot centre, so the dot lands on the
+   plotted point and the label can sit on the outer side of its band */
 .map-node {
   position: absolute;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.45rem;
-  width: 120px;
-  text-align: center;
-  transition: all 0.5s ease;
+  width: 0;
+  height: 0;
+  z-index: 4;
+  transition: opacity 0.5s ease;
 }
 .map-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 11px;
   height: 11px;
+  margin: -5.5px 0 0 -5.5px;
   border-radius: 50%;
   border: 1.3px solid var(--ink-soft);
   background: var(--white);
-  transition: all 0.5s ease;
+  transition: all 0.45s ease;
 }
-.map-node--cognitive .map-dot { width: 9px; height: 9px; }
+.map-node--cognitive .map-dot { width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; }
+
 .map-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 0.8rem;
-  line-height: 1.15;
+  font-size: 0.79rem;
+  line-height: 1.2;
   letter-spacing: 0.01em;
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  gap: 0.12rem;
+  gap: 0.1rem;
+  /* a soft halo, so a label stays legible if it ever meets a line */
+  text-shadow: 0 0 5px var(--white), 0 0 3px var(--white), 0 0 2px var(--white);
 }
+.map-node--reading .map-label { bottom: 13px; }
+.map-node--cognitive .map-label { top: 13px; }
 .map-sub {
   font-family: var(--mono);
   font-size: 0.54rem;
-  letter-spacing: 0.03em;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
   color: var(--ink-soft);
 }
 
 /* node states, monochrome */
-.map-node--dim { opacity: 0.42; }
+.map-node--dim { opacity: 0.4; }
 .map-node--dim .map-dot { border-style: dashed; border-color: var(--ink-dim); }
 .map-node--mastered .map-dot { background: var(--ink); border-color: var(--ink); }
-.map-node--stuck .map-dot { background: var(--white); border: 2.5px solid var(--ink); }
+.map-node--stuck .map-dot {
+  background: var(--white);
+  border: 2.5px solid var(--ink);
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+}
 .map-node--stuck .map-label { font-weight: 500; }
 .map-node--bottleneck .map-dot {
   background: var(--ink);
   border-color: var(--ink);
   width: 14px;
   height: 14px;
+  margin: -7px 0 0 -7px;
   animation: pulse 1.9s ease-in-out infinite;
 }
 .map-node--bottleneck .map-label { font-weight: 600; }
@@ -614,6 +704,7 @@ a { color: inherit; }
   letter-spacing: 0.06em;
   color: var(--ink-mid);
 }
+.legend-gloss { color: var(--ink-dim); margin-left: 0.35rem; }
 
 /* citations inside the demo */
 .evidence-note {
@@ -739,6 +830,23 @@ a { color: inherit; }
   .compare-row { grid-template-columns: 1fr; gap: 0.3rem; padding: 1rem 0; }
   .compare-wrap::before { content: "Wrapper: "; color: var(--ink-dim); font-family: var(--mono); font-size: 0.7rem; }
   .compare-axial::before { content: "Axial: "; color: var(--ink-soft); font-family: var(--mono); font-size: 0.7rem; }
+}
+
+/* the map needs more vertical room and less chrome on a phone */
+@media (max-width: 640px) {
+  .map { aspect-ratio: 100 / 128; }
+  .map-label { font-size: 0.68rem; }
+  .map-sub { font-size: 0.47rem; }
+  .map-age { font-size: 0.55rem; }
+  .map-axis-cap { display: none; }
+  .band-cap { display: none; }
+  .maya-marker-label {
+    top: 0.5em;
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
+  }
+  .map-legend { gap: 0.3rem 0.8rem; }
+  .legend-gloss { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

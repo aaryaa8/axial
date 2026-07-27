@@ -9,36 +9,51 @@ export default function ReadingDemo() {
   const cur = STEPS[step];
   const isFirst = step === 0;
   const isLast = step === STEPS.length - 1;
-  const spokenFor = useRef(-1);
+  const playedFor = useRef(-1);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Speak the current step aloud when sound is enabled. Child lines get a
-  // higher pitch than the tutor's. Degrades silently if unsupported.
+  // Play the step's recorded clip when sound is on. These are real audio files
+  // shipped with the site, so there is no speech API, no key and no network
+  // call to fail. Maya's lines were recorded at a child's pitch.
   useEffect(() => {
-    if (!soundOn || !cur.speak) return;
-    if (spokenFor.current === step) return;
-    spokenFor.current = step;
-    const synth = window.speechSynthesis;
-    if (!synth) return;
-    synth.cancel();
-    const u = new SpeechSynthesisUtterance(cur.speak);
-    const isChild = cur.word !== undefined;
-    u.pitch = isChild ? 1.5 : 1.05;
-    u.rate = isChild ? 0.85 : 0.95;
-    synth.speak(u);
+    if (!soundOn || !cur.audio) return;
+    if (playedFor.current === step) return;
+    playedFor.current = step;
+    const el = audioRef.current;
+    if (!el) return;
+    el.pause();
+    el.src = `${import.meta.env.BASE_URL}audio/${cur.audio}.mp3`;
+    el.currentTime = 0;
+    // Autoplay can still be refused before any interaction; ignore quietly.
+    el.play().catch(() => {});
   }, [step, soundOn, cur]);
 
-  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  useEffect(() => {
+    const el = audioRef.current;
+    return () => {
+      el?.pause();
+    };
+  }, []);
 
   function go(next: number) {
-    spokenFor.current = -1;
+    playedFor.current = -1;
     setStep(next);
+  }
+
+  function toggleSound() {
+    const turningOn = !soundOn;
+    setSoundOn(turningOn);
+    if (turningOn) {
+      // Replay the current step so switching sound on is audible right away.
+      playedFor.current = -1;
+    } else {
+      audioRef.current?.pause();
+    }
   }
 
   return (
     <div className="demo-shell">
-      <div className="demo-mapwrap">
-        <CognitiveMap states={cur.states} trail={cur.trail} />
-      </div>
+      <audio ref={audioRef} preload="auto" />
 
       <div className="demo-panel">
         <div className="demo-panel-top">
@@ -48,10 +63,10 @@ export default function ReadingDemo() {
           </div>
           <button
             className={`sound-toggle ${soundOn ? "is-on" : ""}`}
-            onClick={() => setSoundOn((s) => !s)}
+            onClick={toggleSound}
             aria-pressed={soundOn}
           >
-            {soundOn ? "sound on" : "sound off"}
+            {soundOn ? "◗ sound on" : "sound off"}
           </button>
         </div>
 
@@ -131,6 +146,10 @@ export default function ReadingDemo() {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="demo-mapwrap">
+        <CognitiveMap states={cur.states} trail={cur.trail} />
       </div>
     </div>
   );
