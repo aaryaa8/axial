@@ -17,8 +17,12 @@ export default function Hero() {
         <p className="hero-lede">
           The best education has always been one-on-one tutoring. What makes a
           great tutor great is subtle: over months, they come to know a
-          child’s mind, and they teach from it. We built that model first, and
-          put a reading tutor on top of it.
+          child’s mind, and they teach from it. We built that model first.
+        </p>
+
+        <p className="hero-definer">
+          Axial is a model of how a child learns. The first tutor we built on it
+          teaches reading.
         </p>
 
         <div className="hero-cta">

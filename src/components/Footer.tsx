@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-mark">Axial</div>
       <p className="footer-line">
-        A reading tutor that learns how your child thinks.
+        A model of how a child learns. The first thing it teaches is reading.
       </p>
       <p className="footer-fine">
         Built at Brown, grounded in cognitive science. The cognitive engine and

@@ -39,15 +39,6 @@ export const NODES: MapNode[] = [
   { id: "attention", label: "Staying with it", sub: "sustained attention", layer: "cognitive", x: 71, y: 47 },
 ];
 
-export const EDGES: MapEdge[] = [
-  { from: "hearing", to: "letters" },
-  { from: "holding", to: "blending" }, // the key cross-graph edge
-  { from: "attention", to: "blending" },
-  { from: "letters", to: "blending" },
-  { from: "blending", to: "words" },
-  { from: "words", to: "fluency" },
-];
-
 export interface DemoStep {
   kicker: string;
   title: string;

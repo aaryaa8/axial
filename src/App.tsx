@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import ReadingDemo from "./components/ReadingDemo";
+import WhyAxial from "./components/WhyAxial";
+import Science from "./components/Science";
 import ExpandSkills from "./components/ExpandSkills";
 import Vision from "./components/Vision";
 import Waitlist from "./components/Waitlist";
@@ -50,6 +52,8 @@ export default function App() {
         <ReadingDemo />
       </section>
 
+      <WhyAxial />
+      <Science />
       <ExpandSkills />
       <Vision />
       <Waitlist />

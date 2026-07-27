@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import CognitiveMap from "./CognitiveMap";
 import { STEPS, CHILD } from "../data/child";
+import { citesForTrail } from "../data/evidence";
 
 export default function ReadingDemo() {
   const [step, setStep] = useState(0);
@@ -80,6 +81,17 @@ export default function ReadingDemo() {
               <span className="activity-tag">now</span>
               <span>{cur.activity.after}</span>
             </div>
+          </div>
+        )}
+
+        {cur.trail && cur.trail.length > 0 && (
+          <div className="evidence-note">
+            <span className="evidence-tag">grounded in</span>
+            {citesForTrail(cur.trail).map((c) => (
+              <span className="evidence-cite" key={c}>
+                {c}
+              </span>
+            ))}
           </div>
         )}
 
