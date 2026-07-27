@@ -10,9 +10,16 @@ function nodeById(id: string) {
 function edgePath(e: MapEdge) {
   const a = nodeById(e.from);
   const b = nodeById(e.to);
-  const mx = (a.x + b.x) / 2;
-  const my = (a.y + b.y) / 2 - 4; // gentle lift for an organic arc
-  return `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`;
+  // stop a little short of the target so the arrowhead sits beside the node
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const gap = 3.2;
+  const ex = b.x - (dx / len) * gap;
+  const ey = b.y - (dy / len) * gap;
+  const mx = (a.x + ex) / 2;
+  const my = (a.y + ey) / 2 - 3.5; // gentle lift for an organic arc
+  return `M ${a.x} ${a.y} Q ${mx} ${my} ${ex} ${ey}`;
 }
 
 interface Props {
@@ -35,13 +42,28 @@ export default function CognitiveMap({ states, trail = [] }: Props) {
         aria-hidden="true"
       >
         <defs>
-          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="1.4" result="b" />
-            <feMerge>
-              <feMergeNode in="b" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
+          <marker
+            id="arrow-dim"
+            viewBox="0 -5 10 10"
+            refX="8"
+            refY="0"
+            markerWidth="4"
+            markerHeight="4"
+            orient="auto"
+          >
+            <path d="M0,-4L8,0L0,4" fill="#bbbbbb" />
+          </marker>
+          <marker
+            id="arrow-ink"
+            viewBox="0 -5 10 10"
+            refX="8"
+            refY="0"
+            markerWidth="4.5"
+            markerHeight="4.5"
+            orient="auto"
+          >
+            <path d="M0,-4L8,0L0,4" fill="#1a1a1a" />
+          </marker>
         </defs>
 
         {EDGES.map((e) => {
@@ -52,6 +74,7 @@ export default function CognitiveMap({ states, trail = [] }: Props) {
               d={edgePath(e)}
               className={`map-edge ${on ? "map-edge--trail" : ""}`}
               fill="none"
+              markerEnd={on ? "url(#arrow-ink)" : "url(#arrow-dim)"}
             />
           );
         })}

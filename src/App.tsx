@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import ReadingDemo from "./components/ReadingDemo";
+import ExpandSkills from "./components/ExpandSkills";
 import Vision from "./components/Vision";
 import Waitlist from "./components/Waitlist";
 import Footer from "./components/Footer";
@@ -49,6 +50,7 @@ export default function App() {
         <ReadingDemo />
       </section>
 
+      <ExpandSkills />
       <Vision />
       <Waitlist />
       <Footer />
