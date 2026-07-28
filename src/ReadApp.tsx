@@ -5,8 +5,6 @@ import HowItWorks from "./components/HowItWorks";
 import ReadingDemo from "./components/ReadingDemo";
 import WhyAxial from "./components/WhyAxial";
 import Science from "./components/Science";
-import ExpandSkills from "./components/ExpandSkills";
-import Vision from "./components/Vision";
 import Waitlist from "./components/Waitlist";
 import Footer from "./components/Footer";
 
@@ -33,8 +31,6 @@ export default function App() {
 
       <WhyAxial />
       <Science />
-      <ExpandSkills />
-      <Vision />
       <Waitlist />
       <Footer />
     </div>

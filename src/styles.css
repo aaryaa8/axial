@@ -854,15 +854,6 @@ strong, b { font-weight: 700; }
 .group-title--gap { margin-top: clamp(30px, 4vw, 46px); }
 
 /* ---------- about page, following the live Axial layout ---------- */
-.ab-eyebrow {
-  display: block;
-  font-size: var(--fs-s);
-  font-weight: 700;
-  color: var(--ink-soft);
-  margin-bottom: 0.9rem;
-}
-.ab-eyebrow--ink { color: var(--ink); }
-.ab-eyebrow--light { color: #b9b4a8; }
 
 .ab-h1, .ab-h2, .ab-h3 { display: flex; flex-direction: column; margin: 0; }
 .ab-h1 { font-size: var(--fs-xl); line-height: 1.1; letter-spacing: -0.025em; }
@@ -974,3 +965,55 @@ strong, b { font-weight: 700; }
 }
 .ab-thanks { font-size: var(--fs-m); font-weight: 700; margin-top: 1.6rem; }
 .ab-cta { margin-top: 1rem; }
+
+/* ---------- about: node-mark tags, panels, pull quotes ---------- */
+.ab-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+.ab-tag--dark { color: #b9b4a8; }
+
+/* satellites drift gently around the anchored node */
+@keyframes aboutNodeDrift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(0.9px, -0.7px); }
+  66% { transform: translate(-0.7px, 0.8px); }
+}
+.about-node-drift { animation: aboutNodeDrift 7s ease-in-out infinite; }
+
+/* alternating bands break the page into readable blocks */
+.ab-panel { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+.ab-quote {
+  margin: clamp(26px, 3.5vw, 44px) 0 0;
+  padding: 1.5rem 1.7rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ink);
+  border-radius: 4px;
+  font-size: var(--fs-m);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+  max-width: 760px;
+}
+.ab-panel .ab-quote { background: var(--bg-warm); }
+
+.ab-compare-cell {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.2rem 1.3rem;
+  background: var(--bg);
+}
+.ab-compare-cell--on { border-color: var(--ink); background: var(--white); }
+.ab-compare-k { display: block; font-size: var(--fs-s); font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+.ab-compare-grid { border-top: none; padding-top: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-node-drift { animation: none; }
+}

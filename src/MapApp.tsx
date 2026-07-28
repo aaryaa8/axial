@@ -89,8 +89,8 @@ export default function MapApp() {
         <div className="section-head">
           <h2 className="section-title">The map</h2>
           <p className="section-standfirst">
-            Every skill Axial models, and every dependency between them. Points
-            sit near the domain they belong to, and the most connected skills sit
+            The skills Axial maps and the dependencies between them. Points sit
+            near the domain they belong to, and the most connected skills sit
             closest to the centre. Hover a point to read the skill, click it to
             open the detail.
           </p>
