@@ -1,39 +1,22 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
+import { STEPS, BRING, GROWTH, WHO, IN_EDUCATION, BEYOND } from "./data/about";
 
 const BASE = import.meta.env.BASE_URL;
 
-// Content follows the live Axial about page, carried across into the child and
-// parent framing this site uses.
-const WHO = [
-  {
-    t: "Children",
-    d: "A way of learning that finally fits how they think, and language for what has felt hard, without a label attached.",
-  },
-  {
-    t: "Parents",
-    d: "Understand how your child actually learns, and how to help in a way that fits them. No diagnosis and no pathologising, just a clearer picture and a plan.",
-  },
-  {
-    t: "Teachers",
-    d: "You already know your students learn differently. Axial gives you a precise, practical read on each one, so support matches the child in front of you.",
-  },
-];
-
-const APPLIES = [
-  { t: "Early reading", d: "Find the skill underneath a stall, before a child decides they are bad at reading." },
-  { t: "Learning differences", d: "Built with neurodivergent learners in mind. Two children with the same diagnosis can have very different profiles, and very different needs." },
-  { t: "Tutoring support", d: "A precise starting point, so sessions target the thing that actually moves the needle." },
-  { t: "Classroom teaching", d: "A shared language for how a class learns, so instruction can flex to fit real differences." },
-];
-
-const BEYOND = [
-  { t: "Workplace learning", d: "The same map shows why strong performers plateau and where training will actually land." },
-  { t: "Hiring and talent", d: "A structural read on how someone thinks, adapts under pressure and manages goals, for roles where judgement matters more than a personality label." },
-  { t: "Sport and performance", d: "Attentional control, decision-making and composure are all measurable, which turns vague talk of mental toughness into specific targets." },
-  { t: "High-stakes work", d: "Errors under fatigue come from cognition breaking down while the knowledge is already there. Axial shows what degrades under load." },
-];
+function List({ items }: { items: { t: string; d: string }[] }) {
+  return (
+    <div className="ab-list">
+      {items.map((i) => (
+        <div className="ab-item" key={i.t}>
+          <h3 className="ab-item-t">{i.t}</h3>
+          <p className="ab-item-d">{i.d}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function AboutApp() {
   useReveal();
@@ -42,133 +25,189 @@ export default function AboutApp() {
       <div className="grain" aria-hidden="true" />
       <SiteNav current="about" />
 
-      <header className="hero section">
-        <div className="hero-inner">
-          <h1 className="hero-title">Start learning the way your child thinks.</h1>
-          <p className="hero-lede">
-            Axial maps how a child's mind actually works, then builds the
-            teaching around it. Learning that fits how they think, so it stops
-            feeling like a fight.
-          </p>
-          <div className="hero-cta">
-            <a className="btn btn-primary" href={`${BASE}read/`}>See the reading tutor</a>
-            <a className="btn btn-ghost" href={`${BASE}map/`}>Explore the map</a>
-          </div>
-        </div>
-        <div className="hero-figure">
-          <DomainConstellation center="how a child thinks" showExamples={false} />
-        </div>
+      {/* 1 — hero */}
+      <header className="section ab-hero">
+        <span className="ab-eyebrow">Learning that fits how your child thinks</span>
+        <h1 className="ab-h1">
+          <span className="ab-h1-light">Stop teaching the way you were told.</span>
+          <span className="ab-h1-bold">Start teaching the way your child thinks.</span>
+        </h1>
+        <p className="ab-lede">
+          Axial maps how a child's mind actually works, then builds the teaching
+          around it. Learning that fits how they think, so it stops feeling like
+          a fight.
+        </p>
+        <a className="ab-jump" href="#reframe">See how it works ↓</a>
       </header>
 
-      <section className="section">
-        <div className="section-head">
-          <h2 className="section-title">It was the one-size-fits-all approach</h2>
-          <p className="section-standfirst">
-            Axial starts from a simple flip. Stop asking the child to adapt to
-            the system, and build a system that adapts to the child.
-          </p>
-        </div>
+      {/* 2 — reframe */}
+      <section className="section ab-center" id="reframe">
+        <span className="ab-eyebrow">Why Axial exists</span>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">The problem was never the child.</span>
+          <span className="ab-h1-bold">It was the one-size-fits-all approach.</span>
+        </h2>
+        <p className="ab-lede ab-lede--center">
+          Axial starts from a simple flip. Stop asking the child to adapt to the
+          system, and build a system that adapts to the child.
+        </p>
+      </section>
 
-        <div className="tiles tiles--3">
-          <div className="tile">
-            <h3 className="tile-title">A picture you can act on</h3>
-            <p className="tile-body">
-              From a short diagnostic, a personal map of how a child handles
-              learning. No score and no label, just a picture you can do
-              something about.
-            </p>
+      {/* 3 — what Axial shows you */}
+      <section className="section">
+        <span className="ab-eyebrow">What you will see</span>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">What Axial shows you</span>
+          <span className="ab-h1-bold">about how your child learns.</span>
+        </h2>
+        <p className="ab-lede">
+          After a short diagnostic, you get a personal map of how their mind
+          handles learning. No score and no label, just a picture you can act on.
+        </p>
+
+        <div className="ab-split">
+          <div className="hero-figure">
+            <DomainConstellation center="how a child thinks" showExamples={false} />
           </div>
-          <div className="tile">
-            <h3 className="tile-title">Six domains</h3>
-            <p className="tile-body">
+          <div>
+            <span className="ab-eyebrow">The map itself</span>
+            <h3 className="ab-h3">
+              <span className="ab-h1-light">Six domains,</span>
+              <span className="ab-h1-bold">one connected picture.</span>
+            </h3>
+            <p className="ab-item-d">
               Every skill Axial measures sits inside one of six domains of
-              thinking, feeling and relating. The links between them show which
-              weakness is causing which.
+              thinking, feeling and relating. The links between them are what
+              show which weakness is causing which.
             </p>
-          </div>
-          <div className="tile">
-            <h3 className="tile-title">The science underneath</h3>
-            <p className="tile-body">
-              Built on sixty years of cognitive science, drawn from the research
-              psychologists use to understand how people think and learn.
-            </p>
+            <a className="ab-arrow" href={`${BASE}map/`}>Explore the full map →</a>
           </div>
         </div>
       </section>
 
+      {/* 4 — how it works */}
       <section className="section">
-        <div className="section-head">
-          <h2 className="section-title">Useful to everyone helping them</h2>
-        </div>
-        <div className="tiles tiles--3">
-          {WHO.map((w) => (
-            <div className="tile" key={w.t}>
-              <h3 className="tile-title">{w.t}</h3>
-              <p className="tile-body">{w.d}</p>
+        <span className="ab-eyebrow">How it works</span>
+        <h2 className="ab-h2"><span className="ab-h1-bold">Three steps to the map.</span></h2>
+        <div className="ab-steps">
+          {STEPS.map((s) => (
+            <div className="ab-step" key={s.n}>
+              <span className="ab-step-n">{s.n}</span>
+              <h3 className="ab-item-t">{s.t}</h3>
+              <p className="ab-item-d">{s.d}</p>
             </div>
           ))}
         </div>
-      </section>
 
-      <section className="section">
-        <div className="section-head">
-          <h2 className="section-title">Where it applies today</h2>
-          <p className="section-standfirst">
-            Axial started with reading, because that is where the mismatch shows
-            up first and hurts most.
-          </p>
-        </div>
-        <div className="tiles tiles--2">
-          {APPLIES.map((a) => (
-            <div className="tile" key={a.t}>
-              <h3 className="tile-title">{a.t}</h3>
-              <p className="tile-body">{a.d}</p>
+        <div className="ab-compare">
+          <h3 className="ab-h3"><span className="ab-h1-bold">What hyper-personalisation means</span></h3>
+          <div className="ab-compare-grid">
+            <div>
+              <span className="ab-eyebrow">Personalisation</span>
+              <p className="ab-item-d">tailors to the subject and the goal.</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <h2 className="section-title">The same map extends past the classroom</h2>
-          <p className="section-standfirst">
-            Anywhere people have to think clearly under pressure. Education is
-            where we are starting, and the profile a child builds carries into
-            the rest of their life.
-          </p>
-        </div>
-        <div className="tiles tiles--2">
-          {BEYOND.map((b) => (
-            <div className="tile tile--soon" key={b.t}>
-              <h3 className="tile-title">{b.t}</h3>
-              <p className="tile-body">{b.d}</p>
+            <div>
+              <span className="ab-eyebrow ab-eyebrow--ink">Hyper-personalisation</span>
+              <p className="ab-item-d">tailors to how the mind actually works.</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="section-head">
-          <h2 className="section-title">Who is building this</h2>
-        </div>
-        <div className="about-grid">
-          <p className="about-lede">
-            <a className="bio-link" href="https://www.linkedin.com/in/aaryaa-kamdar/" target="_blank" rel="noreferrer">
-              Aaryaa Kamdar
-            </a>{" "}
-            trained in architecture and data science at the Architectural
-            Association in London, then studied cognitive neuroscience and
-            completed a master's in innovation management and entrepreneurship at
-            Brown University, alongside years of tutoring children one to one.
-          </p>
-          <div className="about-side">
-            <p className="about-note">
-              Axial is looking for a founding partner with go to market and
-              sales partnerships experience.{" "}
-              <a href="mailto:aaryaa.kamdar@gmail.com">Get in touch</a>.
-            </p>
           </div>
+          <p className="ab-lede">
+            That is why two children stuck on the very same thing can get
+            opposite plans. What fixes it for one would hold the other back.
+          </p>
         </div>
+      </section>
+
+      {/* 5 — bring what you're stuck on */}
+      <section className="section">
+        <span className="ab-eyebrow">Bring your own work</span>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">Bring what they are</span>
+          <span className="ab-h1-bold">actually stuck on.</span>
+        </h2>
+        <p className="ab-lede">
+          Share the real thing they are working on, and Axial tailors its help to
+          their profile and to that specific task. A few examples of what parents
+          bring:
+        </p>
+        <List items={BRING} />
+      </section>
+
+      {/* 6 — it grows with you */}
+      <section className="section">
+        <span className="ab-eyebrow">Over time</span>
+        <h2 className="ab-h2"><span className="ab-h1-bold">It grows with them.</span></h2>
+        <List items={GROWTH} />
+      </section>
+
+      {/* 7 — credibility band */}
+      <section className="ab-band">
+        <div className="ab-band-inner">
+          <span className="ab-eyebrow ab-eyebrow--light">The science underneath</span>
+          <p className="ab-band-text">
+            Built on sixty years of cognitive science. Axial maps the cognitive
+            skills that shape how a child learns, and how they fit together,
+            drawn from the research psychologists use to understand how people
+            think and learn.
+          </p>
+          <a className="ab-arrow ab-arrow--light" href={`${BASE}read/#science`}>See the science →</a>
+        </div>
+      </section>
+
+      {/* 8 — who it's for */}
+      <section className="section">
+        <span className="ab-eyebrow">Who it is for</span>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">Made for children.</span>
+          <span className="ab-h1-bold">Useful to everyone helping them.</span>
+        </h2>
+        <List items={WHO} />
+      </section>
+
+      {/* 9 — applications */}
+      <section className="section">
+        <span className="ab-eyebrow">Expanding scope</span>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">One map, many</span>
+          <span className="ab-h1-bold">ways to use it.</span>
+        </h2>
+        <p className="ab-lede">
+          Axial started with reading, because that is where the mismatch shows up
+          first and hurts most. The same map works anywhere learning and focus
+          matter.
+        </p>
+
+        <h3 className="ab-sub">In education</h3>
+        <List items={IN_EDUCATION} />
+        <h3 className="ab-sub ab-sub--gap">Beyond the classroom</h3>
+        <List items={BEYOND} />
+      </section>
+
+      {/* 10 — closing */}
+      <section className="section ab-center">
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">See how your child's mind</span>
+          <span className="ab-h1-bold">actually works.</span>
+        </h2>
+        <p className="ab-lede ab-lede--center">
+          Axial Read is live as a demo, and the waitlist opens first.
+        </p>
+        <div className="hero-cta ab-cta">
+          <a className="btn btn-primary" href={`${BASE}read/`}>See the reading tutor</a>
+          <a className="btn btn-ghost" href={`${BASE}products/`}>All products</a>
+        </div>
+        <p className="ab-fine">
+          Built by{" "}
+          <a className="bio-link" href="https://www.linkedin.com/in/aaryaa-kamdar/" target="_blank" rel="noreferrer">
+            Aaryaa Kamdar
+          </a>
+          , who trained in architecture and data science at the Architectural
+          Association in London, then studied cognitive neuroscience and
+          completed a master's in innovation management and entrepreneurship at
+          Brown University. Axial is looking for a founding partner with go to
+          market and sales partnerships experience.{" "}
+          <a href="mailto:aaryaa.kamdar@gmail.com">Get in touch</a>.
+        </p>
       </section>
 
       <footer className="footer">
