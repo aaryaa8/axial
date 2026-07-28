@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-mark">Axial</div>
       <p className="footer-line">
-        A model of how a child learns. The first thing it teaches is reading.
+        A model of how a child learns.
       </p>
       <p className="footer-fine">
         The cognitive engine and taxonomy behind Axial are proprietary. This page

@@ -4,14 +4,22 @@
 // Labels radiate outward from the ring, so the connecting lines stay inside it
 // and never cross a word.
 
-export const DOMAINS = [
-  { label: "Reasoning", eg: "patterns, cause and effect" },
-  { label: "Memory", eg: "holding and recalling" },
-  { label: "Cognitive Control", eg: "focus, impulse" },
-  { label: "Metacognition", eg: "planning, self-checking" },
-  { label: "Emotional", eg: "confidence, regulation" },
-  { label: "Social", eg: "sharing, collaboration" },
-];
+import { DOMAINS as MAP_DOMAINS, type DomainID } from "../data/mapPublic";
+
+const EXAMPLES: Record<DomainID, string> = {
+  D1: "patterns, cause and effect",
+  D2: "holding and recalling",
+  D3: "focus, impulse",
+  D4: "planning, self-checking",
+  D5: "confidence, regulation",
+  D6: "sharing, collaboration",
+};
+
+// Same six domains as the full map, in the same order, so the two never drift.
+export const DOMAINS = (["D1", "D2", "D3", "D4", "D5", "D6"] as DomainID[]).map((id) => ({
+  label: MAP_DOMAINS[id].short,
+  eg: EXAMPLES[id],
+}));
 
 const CX = 50;
 const CY = 50;

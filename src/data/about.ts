@@ -15,9 +15,9 @@ export const BRING = [
 ];
 
 export const GROWTH = [
-  { t: "Watch the profile change", d: "Come back to the diagnostic as the child grows, and see which things are actually working." },
-  { t: "Connect what school already knows", d: "Link the assessments they already sit, so the map sharpens against real results." },
-  { t: "It belongs to the child", d: "The profile is theirs to take to a tutor, a new teacher, or a new school, wherever it helps to show how they work." },
+  { t: "Watch the profile change", d: "Come back as the child grows, and see which things are actually working." },
+  { t: "Connect what school already knows", soon: true, d: "Link the assessments they already sit, so the map sharpens against real results." },
+  { t: "It belongs to the child", soon: true, d: "The profile is theirs to take to a tutor, a new teacher, or a new school, wherever it helps to show how they work." },
 ];
 
 export const WHO = [

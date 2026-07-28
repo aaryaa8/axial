@@ -945,3 +945,32 @@ strong, b { font-weight: 700; }
   .ab-split, .ab-steps, .ab-compare-grid, .ab-list { grid-template-columns: 1fr; }
   .ab-item { padding-right: 0; }
 }
+
+/* about: coming-soon markers and the closing waitlist */
+.ab-soon {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  vertical-align: middle;
+}
+.ab-status { display: inline-block; margin-bottom: 0.9rem; }
+.ab-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6rem; }
+.ab-form input {
+  font-family: var(--sans);
+  font-size: var(--fs-s);
+  padding: 0.85rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  color: var(--ink);
+  min-width: 260px;
+}
+.ab-thanks { font-size: var(--fs-m); font-weight: 700; margin-top: 1.6rem; }
+.ab-cta { margin-top: 1rem; }

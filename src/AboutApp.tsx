@@ -1,16 +1,20 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
+import { useState } from "react";
 import { STEPS, BRING, GROWTH, WHO, IN_EDUCATION, BEYOND } from "./data/about";
 
 const BASE = import.meta.env.BASE_URL;
 
-function List({ items }: { items: { t: string; d: string }[] }) {
+function List({ items }: { items: { t: string; d: string; soon?: boolean }[] }) {
   return (
     <div className="ab-list">
       {items.map((i) => (
         <div className="ab-item" key={i.t}>
-          <h3 className="ab-item-t">{i.t}</h3>
+          <h3 className="ab-item-t">
+            {i.t}
+            {i.soon && <span className="ab-soon">Coming soon</span>}
+          </h3>
           <p className="ab-item-d">{i.d}</p>
         </div>
       ))}
@@ -20,6 +24,8 @@ function List({ items }: { items: { t: string; d: string }[] }) {
 
 export default function AboutApp() {
   useReveal();
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
   return (
     <div className="page">
       <div className="grain" aria-hidden="true" />
@@ -61,8 +67,8 @@ export default function AboutApp() {
           <span className="ab-h1-bold">about how your child learns.</span>
         </h2>
         <p className="ab-lede">
-          After a short diagnostic, you get a personal map of how their mind
-          handles learning. No score and no label, just a picture you can act on.
+          From a few short sessions of reading and play, you get a personal map of
+          how their mind handles learning. No score and no label, just a picture you can act on.
         </p>
 
         <div className="ab-split">
@@ -121,6 +127,7 @@ export default function AboutApp() {
       {/* 5 — bring what you're stuck on */}
       <section className="section">
         <span className="ab-eyebrow">Bring your own work</span>
+        <span className="status-tag is-wip ab-status">Coming soon</span>
         <h2 className="ab-h2">
           <span className="ab-h1-light">Bring what they are</span>
           <span className="ab-h1-bold">actually stuck on.</span>
@@ -190,10 +197,34 @@ export default function AboutApp() {
           <span className="ab-h1-bold">actually works.</span>
         </h2>
         <p className="ab-lede ab-lede--center">
-          Axial Read is live as a demo, and the waitlist opens first.
+          Axial Read is live as a demo. Join the waitlist to be first in as the
+          rest opens up.
         </p>
+
+        {sent ? (
+          <p className="ab-thanks">You are on the list. Thank you for believing in this early.</p>
+        ) : (
+          <form
+            className="ab-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (email.trim()) setSent(true);
+            }}
+          >
+            <input
+              type="email"
+              required
+              placeholder="you@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-label="Your email"
+            />
+            <button className="btn btn-primary" type="submit">Join the waitlist</button>
+          </form>
+        )}
+
         <div className="hero-cta ab-cta">
-          <a className="btn btn-primary" href={`${BASE}read/`}>See the reading tutor</a>
+          <a className="btn btn-ghost" href={`${BASE}read/`}>See the reading tutor</a>
           <a className="btn btn-ghost" href={`${BASE}products/`}>All products</a>
         </div>
         <p className="ab-fine">
