@@ -831,3 +831,6 @@ strong, b { font-weight: 700; }
 .soon-page .section-title { margin: 0.2rem 0 0; }
 .soon-page .section-standfirst { margin: 0; }
 .soon-page .hero-cta { margin-top: 0.6rem; }
+
+.bio-link { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.bio-link:hover { opacity: 0.6; }

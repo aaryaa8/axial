@@ -195,9 +195,13 @@ export default function CompanyApp() {
           </p>
           <div className="about-side">
             <p>
-              Aaryaa Kamdar trained in architecture and data science at the
-              Architectural Association in London, and holds a master's in
-              innovation management and entrepreneurship.
+              <a className="bio-link" href="https://www.linkedin.com/in/aaryaa-kamdar/" target="_blank" rel="noreferrer">
+                Aaryaa Kamdar
+              </a>{" "}
+              trained in architecture and data science at the Architectural
+              Association in London, then studied cognitive neuroscience and
+              completed a master's in innovation management and entrepreneurship
+              at Brown University.
             </p>
             <p className="about-note">
               Axial is looking for a founding partner with go to market and

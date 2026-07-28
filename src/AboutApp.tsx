@@ -153,9 +153,13 @@ export default function AboutApp() {
         </div>
         <div className="about-grid">
           <p className="about-lede">
-            Aaryaa Kamdar trained in architecture and data science at the
-            Architectural Association in London, studied cognitive neuroscience
-            at Brown, and has spent years tutoring children one to one.
+            <a className="bio-link" href="https://www.linkedin.com/in/aaryaa-kamdar/" target="_blank" rel="noreferrer">
+              Aaryaa Kamdar
+            </a>{" "}
+            trained in architecture and data science at the Architectural
+            Association in London, then studied cognitive neuroscience and
+            completed a master's in innovation management and entrepreneurship at
+            Brown University, alongside years of tutoring children one to one.
           </p>
           <div className="about-side">
             <p className="about-note">
