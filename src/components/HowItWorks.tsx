@@ -1,3 +1,4 @@
+import Tag from "./Tag";
 const LOOP = [
   {
     n: "01",
@@ -20,7 +21,11 @@ export default function HowItWorks() {
   return (
     <section className="section how" id="how">
       <div className="section-head">
-        <h2 className="section-title">Two connected maps of your child</h2>
+        <Tag mark="triangle">How it works</Tag>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">Two connected maps</span>
+          <span className="ab-h1-bold">of your child.</span>
+        </h2>
       </div>
 
       <div className="twomaps">

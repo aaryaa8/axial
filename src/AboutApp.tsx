@@ -2,19 +2,10 @@ import { useState } from "react";
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
-import SectionNodeMark, { type MarkVariant } from "./components/SectionNodeMark";
+import Tag from "./components/Tag";
 import { STEPS, BRING, GROWTH, WHO, IN_EDUCATION, BEYOND } from "./data/about";
 
 const BASE = import.meta.env.BASE_URL;
-
-function Tag({ mark, dark, children }: { mark: MarkVariant; dark?: boolean; children: React.ReactNode }) {
-  return (
-    <span className={`ab-tag ${dark ? "ab-tag--dark" : ""}`}>
-      <SectionNodeMark variant={mark} size={26} dark={dark} />
-      {children}
-    </span>
-  );
-}
 
 function List({ items }: { items: { t: string; d: string; soon?: boolean }[] }) {
   return (

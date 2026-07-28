@@ -1085,3 +1085,14 @@ strong, b { font-weight: 700; }
 @media (max-width: 900px) {
   .ab-apps-head, .ab-cards { grid-template-columns: 1fr; }
 }
+
+/* the section language now runs across every page */
+.section-head .ab-h2 { margin-top: 0; }
+.section-head .ab-tag { margin-bottom: 0.9rem; }
+.hero-inner .ab-h1 { animation: rise 0.8s ease both; }
+.hero-inner .ab-tag { animation: rise 0.7s ease both; }
+.ab-minilabel--gap { margin-top: clamp(30px, 4vw, 46px); }
+.waitlist-title.ab-h2 { align-items: center; }
+.waitlist-card .ab-h1-light { color: #8f887a; }
+.waitlist-card .ab-h1-bold { color: var(--bg); }
+.ab-panel > .section { max-width: var(--maxw); margin-inline: auto; }

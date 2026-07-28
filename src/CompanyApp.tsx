@@ -1,6 +1,7 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
+import Tag from "./components/Tag";
 import ProductGrid from "./components/ProductGrid";
 import { YOUNG_LEARNERS, WIDER } from "./data/products";
 
@@ -55,7 +56,11 @@ export default function CompanyApp() {
 
       <header className="hero section">
         <div className="hero-inner">
-          <h1 className="hero-title">We map how a child learns.</h1>
+          <Tag mark="star">Cognitive science, built into software</Tag>
+          <h1 className="ab-h1">
+            <span className="ab-h1-light">We map</span>
+            <span className="ab-h1-bold">how a child learns.</span>
+          </h1>
 
           <p className="hero-lede">
             Axial is a model of how a mind learns, grounded in published
@@ -81,7 +86,11 @@ export default function CompanyApp() {
 
       <section className="section" id="model">
         <div className="section-head">
-          <h2 className="section-title">A map of how one child thinks</h2>
+          <Tag mark="orbit">The model</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">A map of</span>
+            <span className="ab-h1-bold">how one child thinks.</span>
+          </h2>
           <p className="section-standfirst">
             Axial describes a learner as a set of connected cognitive skills
             across six domains, scored from how the child actually works. The
@@ -110,9 +119,14 @@ export default function CompanyApp() {
         </div>
       </section>
 
+      <div className="ab-panel">
       <section className="section" id="examples">
         <div className="section-head">
-          <h2 className="section-title">Three children who all look stuck on reading</h2>
+          <Tag mark="fork">What the map catches</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">Three children who all</span>
+            <span className="ab-h1-bold">look stuck on reading.</span>
+          </h2>
           <p className="section-standfirst">
             Each of these children needs different teaching this week. The map
             is what tells them apart.
@@ -132,10 +146,15 @@ export default function CompanyApp() {
           ))}
         </div>
       </section>
+      </div>
 
       <section className="section" id="products">
         <div className="section-head">
-          <h2 className="section-title">Products built on the model</h2>
+          <Tag mark="chain">What it powers</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">Products built</span>
+            <span className="ab-h1-bold">on the model.</span>
+          </h2>
           <p className="section-standfirst">
             The engine stays the same and the skills taught on top of it change.
             We started with reading, because it is early, universal, and the
@@ -150,9 +169,14 @@ export default function CompanyApp() {
         <ProductGrid items={WIDER} />
       </section>
 
+      <div className="ab-panel">
       <section className="section" id="about">
         <div className="section-head">
-          <h2 className="section-title">Built from years of tutoring children</h2>
+          <Tag mark="pair">Who is building this</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">Built from years</span>
+            <span className="ab-h1-bold">of tutoring children.</span>
+          </h2>
         </div>
 
         <div className="about-grid">
@@ -184,6 +208,7 @@ export default function CompanyApp() {
           </div>
         </div>
       </section>
+      </div>
 
       <footer className="footer">
         <div className="footer-mark">Axial</div>

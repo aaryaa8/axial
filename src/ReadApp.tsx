@@ -1,5 +1,6 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
+import Tag from "./components/Tag";
 import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import ReadingDemo from "./components/ReadingDemo";
@@ -20,7 +21,11 @@ export default function App() {
 
       <section className="section demo" id="demo">
         <div className="section-head">
-          <h2 className="section-title">Watch the tutor work with a six year old</h2>
+          <Tag mark="orbit">See it work</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">Watch the tutor work</span>
+            <span className="ab-h1-bold">with a six year old.</span>
+          </h2>
           <p className="section-standfirst">
             Maya is six years old and reads three words aloud. Follow what Axial
             hears, what it works out, and how it changes its teaching.
@@ -29,7 +34,9 @@ export default function App() {
         <ReadingDemo />
       </section>
 
-      <WhyAxial />
+      <div className="ab-panel">
+        <WhyAxial />
+      </div>
       <Science />
       <Waitlist />
       <Footer />

@@ -1,3 +1,4 @@
+import Tag from "./Tag";
 const ROWS = [
   {
     q: "What decides the next step",
@@ -48,7 +49,11 @@ export default function WhyAxial() {
   return (
     <section className="section why" id="why">
       <div className="section-head">
-        <h2 className="section-title">How Axial compares with a chat based AI tutor</h2>
+        <Tag mark="fork">Why Axial</Tag>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">How Axial compares with</span>
+          <span className="ab-h1-bold">a chat based AI tutor.</span>
+        </h2>
         <p className="section-standfirst">
           Most products called an AI tutor are a language model in a chat box. They
           read what a child knows from the last message, pick the next step by

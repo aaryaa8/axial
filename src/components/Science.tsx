@@ -1,3 +1,4 @@
+import Tag from "./Tag";
 import { NODES } from "../data/child";
 import { DEPENDENCIES, CITATIONS, EDGE_TYPES, citationById } from "../data/evidence";
 
@@ -9,7 +10,11 @@ export default function Science() {
   return (
     <section className="section science" id="science">
       <div className="section-head">
-        <h2 className="section-title">The research behind every connection in the map</h2>
+        <Tag mark="crossed">The science</Tag>
+        <h2 className="ab-h2">
+          <span className="ab-h1-light">The research behind</span>
+          <span className="ab-h1-bold">every connection.</span>
+        </h2>
         <p className="section-standfirst">
           The order Axial teaches in comes from decades of reading research: the
           Simple View of Reading, Scarborough’s Reading Rope, and the five

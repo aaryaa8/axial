@@ -2,6 +2,7 @@ import { useState } from "react";
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import AxialMapPublic, { type Placed } from "./components/AxialMapPublic";
+import Tag from "./components/Tag";
 import { DOMAINS, SKILLS, LINKS } from "./data/mapPublic";
 
 export default function MapApp() {
@@ -87,7 +88,11 @@ export default function MapApp() {
 
       <section className="section section--wide map-page">
         <div className="section-head">
-          <h2 className="section-title">The map</h2>
+          <Tag mark="crossed">The whole model</Tag>
+          <h2 className="ab-h2">
+            <span className="ab-h1-light">Every skill,</span>
+            <span className="ab-h1-bold">one connected map.</span>
+          </h2>
           <p className="section-standfirst">
             The skills Axial maps and the dependencies between them. Points sit
             near the domain they belong to, and the most connected skills sit

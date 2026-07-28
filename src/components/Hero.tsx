@@ -1,9 +1,13 @@
+import Tag from "./Tag";
+
 export default function Hero() {
   return (
     <header className="hero section">
       <div className="hero-inner">
-        <h1 className="hero-title">
-          A reading tutor that learns how your child thinks
+        <Tag mark="star">Axial Read</Tag>
+        <h1 className="ab-h1">
+          <span className="ab-h1-light">A reading tutor that learns</span>
+          <span className="ab-h1-bold">how your child thinks.</span>
         </h1>
 
         <p className="hero-lede">
