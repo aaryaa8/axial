@@ -14,6 +14,8 @@ export default defineConfig({
         read: resolve(__dirname, "read/index.html"),
         map: resolve(__dirname, "map/index.html"),
         about: resolve(__dirname, "about/index.html"),
+        products: resolve(__dirname, "products/index.html"),
+        arithmetic: resolve(__dirname, "arithmetic/index.html"),
       },
     },
   },

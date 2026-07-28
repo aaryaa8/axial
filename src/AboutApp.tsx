@@ -1,30 +1,8 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
+import DomainConstellation from "./components/DomainConstellation";
 
 const BASE = import.meta.env.BASE_URL;
-
-const STATUS = [
-  {
-    t: "The cognitive model",
-    s: "Built",
-    b: "35 skills across six domains, around a hundred dependencies between them, drawn from about 120 peer reviewed sources, with a deterministic scoring engine on top.",
-  },
-  {
-    t: "Axial Read",
-    s: "In progress",
-    b: "The reading tutor. The demo works end to end. The early reading progression, the play based intake for four to eight year olds and the child facing interface are being built now.",
-  },
-  {
-    t: "Axial for schools",
-    s: "In progress",
-    b: "One view of a whole class, so a teacher can group and target instruction. Prototyped, and waiting on the reading tutor to land first.",
-  },
-  {
-    t: "Consent and safety",
-    s: "In progress",
-    b: "Verifiable parental consent and a content review layer, both required before any real child uses the product.",
-  },
-];
 
 export default function AboutApp() {
   useReveal();
@@ -33,49 +11,56 @@ export default function AboutApp() {
       <div className="grain" aria-hidden="true" />
       <SiteNav current="about" />
 
-      <section className="section about-page">
+      <header className="hero section">
+        <div className="hero-inner">
+          <h1 className="hero-title">Start learning the way your child thinks.</h1>
+          <p className="hero-lede">
+            Axial maps how a child's mind actually works, then builds the
+            teaching around it. Learning that fits how they think, so it stops
+            feeling like a fight.
+          </p>
+          <div className="hero-cta">
+            <a className="btn btn-primary" href={`${BASE}read/`}>See the reading tutor</a>
+            <a className="btn btn-ghost" href={`${BASE}map/`}>Explore the map</a>
+          </div>
+        </div>
+        <div className="hero-figure">
+          <DomainConstellation center="how a child thinks" showExamples={false} />
+        </div>
+      </header>
+
+      <section className="section">
         <div className="section-head">
-          <h2 className="section-title">About Axial</h2>
+          <h2 className="section-title">It was the one-size-fits-all approach</h2>
           <p className="section-standfirst">
-            Axial began with a question that comes up constantly when you teach
-            children one to one. Why does the same explanation work for one child
-            and fail completely for the next?
+            Axial starts from a simple flip. Stop asking the child to adapt to
+            the system, and build a system that adapts to the child.
           </p>
         </div>
 
-        <div className="about-grid">
-          <div>
-            <p className="about-lede">
-              <strong>
-                Once you understand how a particular child's mind works, teaching
-                becomes far easier and the child improves quickly.
-              </strong>{" "}
-              Every good tutor works this out by instinct over months of sitting
-              with one child. It has never been something software could do,
-              because doing it takes a model of the child that nobody had built.
-            </p>
-            <p className="about-body">
-              So that is what we built first. Axial describes a learner as a set
-              of connected cognitive skills across six domains, scored from how
-              the child actually works, with every conclusion traceable to
-              something we observed. The reading tutor is the first product on
-              top of it, and the model reaches a good deal further than reading.
+        <div className="tiles tiles--3">
+          <div className="tile">
+            <h3 className="tile-title">A picture you can act on</h3>
+            <p className="tile-body">
+              From a short diagnostic, a personal map of how a child handles
+              learning. No score and no label, just something you can do
+              something about on Monday morning.
             </p>
           </div>
-
-          <div className="about-side">
-            <p>
-              <b>Aaryaa Kamdar</b> trained in architecture and data science at the
-              Architectural Association in London, studied cognitive
-              neuroscience at Brown, and holds a master's in innovation
-              management and entrepreneurship. Alongside that, years of tutoring
-              children one to one and teaching through TeachSTEAM, an education
-              program running STEAM workshops for school children.
+          <div className="tile">
+            <h3 className="tile-title">Six domains</h3>
+            <p className="tile-body">
+              Every skill Axial measures sits inside one of six domains of
+              thinking, feeling and relating, and the links between them show
+              which weakness is causing which.
             </p>
-            <p className="about-note">
-              Axial is looking for a founding partner with go to market and sales
-              partnerships experience.{" "}
-              <a href="mailto:aaryaa.kamdar@gmail.com">Get in touch</a>.
+          </div>
+          <div className="tile">
+            <h3 className="tile-title">The science underneath</h3>
+            <p className="tile-body">
+              Built on sixty years of cognitive science. The skills that shape
+              how a child learns, and how they fit together, drawn from the
+              research psychologists use to understand how people think.
             </p>
           </div>
         </div>
@@ -83,30 +68,53 @@ export default function AboutApp() {
 
       <section className="section">
         <div className="section-head">
-          <h2 className="section-title">Where things stand</h2>
+          <h2 className="section-title">Where Axial starts, and where it goes</h2>
           <p className="section-standfirst">
-            Axial is early, and it is worth being straightforward about which
-            parts exist today and which are being built.
+            Axial started with reading, because that is where the mismatch shows
+            up first and hurts most. The same map works anywhere learning and
+            focus matter, and the profile a child builds carries into the rest
+            of their life.
           </p>
         </div>
 
         <div className="tiles tiles--2">
-          {STATUS.map((s) => (
-            <div className="tile" key={s.t}>
-              <span className={`status-tag ${s.s === "Built" ? "is-done" : "is-wip"}`}>{s.s}</span>
-              <h3 className="tile-title">{s.t}</h3>
-              <p className="tile-body">{s.b}</p>
-            </div>
-          ))}
+          <div className="tile">
+            <span className="status-tag is-done">Built</span>
+            <h3 className="tile-title">The cognitive model</h3>
+            <p className="tile-body">
+              35 skills across six domains, around a hundred dependencies
+              between them, and a deterministic scoring engine on top.
+            </p>
+          </div>
+          <div className="tile">
+            <span className="status-tag is-wip">In progress</span>
+            <h3 className="tile-title">Everything built on it</h3>
+            <p className="tile-body">
+              The reading tutor works end to end as a demo. The play based
+              intake, the child facing interface, and the consent and safety
+              layer needed before a real child uses it are being built now.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="about-cta">
-          <a className="btn btn-primary" href={`${BASE}read/`}>
-            See the reading tutor
-          </a>
-          <a className="btn btn-ghost" href={`${BASE}map/`}>
-            Explore the map
-          </a>
+      <section className="section">
+        <div className="section-head">
+          <h2 className="section-title">Who is building this</h2>
+        </div>
+        <div className="about-grid">
+          <p className="about-lede">
+            Aaryaa Kamdar trained in architecture and data science at the
+            Architectural Association in London, studied cognitive neuroscience
+            at Brown, and has spent years tutoring children one to one.
+          </p>
+          <div className="about-side">
+            <p className="about-note">
+              Axial is looking for a founding partner with go to market and
+              sales partnerships experience.{" "}
+              <a href="mailto:aaryaa.kamdar@gmail.com">Get in touch</a>.
+            </p>
+          </div>
         </div>
       </section>
 

@@ -704,15 +704,6 @@ strong, b { font-weight: 700; }
 .map-panel-meta { font-size: var(--fs-s); color: var(--ink-mid); margin: 0 0 0.9rem; line-height: 1.6; }
 .map-panel-meta b { color: var(--ink); }
 
-.map-locked {
-  border: 1px dashed var(--ink-dim);
-  border-radius: 4px;
-  padding: 1rem 1.1rem;
-  margin-bottom: 1.1rem;
-  background: var(--bg-warm);
-}
-.map-locked-tag { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
-.map-locked p { font-size: var(--fs-s); color: var(--ink-mid); margin: 0.5rem 0 0; line-height: 1.6; }
 
 .map-panel-form { display: flex; flex-direction: column; gap: 0.5rem; }
 .map-panel-form input {
@@ -749,3 +740,88 @@ strong, b { font-weight: 700; }
   .map-page-grid { grid-template-columns: 1fr; }
   .map-panel { position: static; }
 }
+
+/* ---------- map: tooltip, legend, guide ---------- */
+.axialmap-tip {
+  position: fixed;
+  z-index: 40;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 4px;
+  padding: 0.45rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  max-width: 220px;
+}
+.axialmap-tip-name { font-size: var(--fs-s); font-weight: 700; line-height: 1.2; }
+.axialmap-tip-meta { font-size: var(--fs-xs); color: #b9b4a8; }
+
+.axialmap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rule);
+}
+.axialmap-legend-head {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.axialmap-legend-head--right { margin-left: auto; }
+.axialmap-legend-item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.axialmap-legend-label { font-size: var(--fs-xs); color: var(--ink-mid); text-transform: capitalize; }
+
+.axialmap-guide { border-top: 1px solid var(--rule); padding-top: 0.85rem; }
+.axialmap-guide summary {
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.axialmap-guide-body { padding-top: 0.8rem; }
+.axialmap-guide-body p { font-size: var(--fs-s); color: var(--ink-mid); line-height: 1.7; margin: 0 0 0.7rem; }
+.axialmap-guide-body ul { margin: 0 0 0.7rem; padding-left: 1.1rem; }
+.axialmap-guide-body li { font-size: var(--fs-s); color: var(--ink-mid); line-height: 1.7; text-transform: none; }
+.axialmap-guide-body li b { color: var(--ink); text-transform: capitalize; }
+
+/* ---------- the blurred, gated explanation ---------- */
+.map-blur { position: relative; margin-bottom: 1.1rem; }
+.map-blur-text { display: flex; flex-direction: column; gap: 0.5rem; filter: blur(4px); user-select: none; }
+.map-blur-text span { display: block; height: 9px; border-radius: 3px; background: var(--ink-dim); }
+.map-blur-text span:nth-child(1) { width: 96%; }
+.map-blur-text span:nth-child(2) { width: 88%; }
+.map-blur-text span:nth-child(3) { width: 93%; }
+.map-blur-text span:nth-child(4) { width: 70%; }
+.map-blur-text span:nth-child(5) { width: 90%; }
+.map-blur-text span:nth-child(6) { width: 84%; }
+.map-blur-text span:nth-child(7) { width: 52%; }
+.map-blur-over {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 0.6rem;
+}
+.map-blur-over p {
+  margin: 0;
+  font-size: var(--fs-s);
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.45rem 0.7rem;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+/* ---------- coming soon ---------- */
+.tile--soon { background: transparent; border-style: dashed; }
+.soon-next { margin-top: clamp(32px, 4vw, 52px); }
+.soon-next > .tile-title { margin-bottom: 0.9rem; }

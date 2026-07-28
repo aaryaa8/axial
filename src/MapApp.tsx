@@ -21,7 +21,8 @@ export default function MapApp() {
           <p className="section-standfirst">
             Every skill Axial models, and every dependency between them. Points
             sit near the domain they belong to, and the most connected skills sit
-            closest to the centre. Hover to read a skill, click to open it.
+            closest to the centre. Hover a point to read the skill, click it to
+            open the detail.
           </p>
         </div>
 
@@ -31,21 +32,20 @@ export default function MapApp() {
           <aside className="map-panel">
             {open ? (
               <>
-                <span className="map-panel-domain">{DOMAINS[open.domain].label}</span>
+                <span className="map-panel-domain">{DOMAINS[open.domain].short}</span>
                 <h3 className="map-panel-name">{open.name}</h3>
                 <p className="map-panel-meta">
                   Connected to <b>{open.degree}</b> other{" "}
                   {open.degree === 1 ? "skill" : "skills"} in the map.
                 </p>
 
-                <div className="map-locked">
-                  <span className="map-locked-tag">Held back</span>
-                  <p>
-                    What this skill means, which skills it carries, and how a
-                    weakness here shows up in a child's work. This is the part of
-                    Axial that took a year and a hundred and twenty sources to
-                    build, so it opens up for people on the list.
-                  </p>
+                <div className="map-blur">
+                  <div className="map-blur-text" aria-hidden="true">
+                    <span /><span /><span /><span /><span /><span /><span />
+                  </div>
+                  <div className="map-blur-over">
+                    <p>What this skill means, and how a weakness here shows up in a child's work.</p>
+                  </div>
                 </div>
 
                 {sent ? (
@@ -53,24 +53,10 @@ export default function MapApp() {
                     You are on the list. We will be in touch as this opens up.
                   </p>
                 ) : (
-                  <form
-                    className="map-panel-form"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (email.trim()) setSent(true);
-                    }}
-                  >
-                    <input
-                      type="email"
-                      required
-                      placeholder="you@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      aria-label="Your email"
-                    />
-                    <button className="btn btn-primary" type="submit">
-                      Join the waitlist
-                    </button>
+                  <form className="map-panel-form" onSubmit={(e) => { e.preventDefault(); if (email.trim()) setSent(true); }}>
+                    <input type="email" required placeholder="you@email.com" value={email}
+                      onChange={(e) => setEmail(e.target.value)} aria-label="Your email" />
+                    <button className="btn btn-primary" type="submit">Join the waitlist to read it</button>
                   </form>
                 )}
               </>
@@ -82,18 +68,15 @@ export default function MapApp() {
                   record which skill carries which, so Axial can find the one
                   weakness underneath that explains several others.
                 </p>
-                <p className="map-panel-meta">
-                  Click any point to open a skill.
-                </p>
+                <p className="map-panel-meta">Click any point to open a skill.</p>
               </>
             )}
           </aside>
         </div>
 
         <p className="map-note">
-          This view shows the structure of the model. The definitions, the
-          dependency types and the strength of each connection stay inside
-          Axial.
+          This view shows the structure of the model. The definitions behind each
+          skill and the research behind each connection stay inside Axial.
         </p>
       </section>
 
