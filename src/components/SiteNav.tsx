@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 const BASE = import.meta.env.BASE_URL;
 
 interface Props {
@@ -5,8 +7,18 @@ interface Props {
 }
 
 export default function SiteNav({ current }: Props) {
+  // a hairline appears only once the bar has something scrolling under it
+  const [stuck, setStuck] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 4);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="sitenav">
+    <div className={`sitenav-bar ${stuck ? "is-stuck" : ""}`}>
+      <nav className="sitenav">
       <a className="sitenav-mark" href={BASE}>
         Axial
       </a>
@@ -24,6 +36,7 @@ export default function SiteNav({ current }: Props) {
           About
         </a>
       </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

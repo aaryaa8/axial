@@ -22,7 +22,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -32,7 +32,7 @@ body {
   font-weight: 400;
   font-size: var(--fs-m);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -98,10 +98,21 @@ strong, b { font-weight: 700; }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); transform: translateY(-2px); }
 
 /* ---------- site nav ---------- */
+.sitenav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(247, 246, 243, 0.88);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.sitenav-bar.is-stuck { border-bottom-color: var(--rule); }
 .sitenav {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 26px clamp(22px, 6vw, 90px) 0;
+  padding: 16px clamp(22px, 6vw, 90px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -683,18 +694,20 @@ strong, b { font-weight: 700; }
   pointer-events: none;
 }
 
+/* the skill detail sits under the map, so it never covers the constellation */
 .map-panel {
-  position: absolute;
-  top: 44px;
-  right: 0;
-  width: 300px;
-  z-index: 10;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: start;
   background: var(--white);
   border: 1px solid var(--rule);
   border-radius: 6px;
-  padding: 1.4rem 1.3rem;
-  box-shadow: 0 18px 40px -28px rgba(26, 26, 26, 0.35);
+  padding: 1.5rem 1.6rem;
+  margin-top: 0.4rem;
 }
+.map-panel-info { display: flex; flex-direction: column; }
+.map-panel-gate { display: flex; flex-direction: column; gap: 1rem; }
 .map-panel-domain { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 .map-panel-name { font-size: var(--fs-m); font-weight: 700; margin: 0.4rem 0 0.6rem; line-height: 1.25; }
 .map-panel-meta { font-size: var(--fs-s); color: var(--ink-mid); margin: 0 0 0.9rem; line-height: 1.6; }
@@ -733,7 +746,7 @@ strong, b { font-weight: 700; }
 .about-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: clamp(28px, 4vw, 44px); }
 
 @media (max-width: 900px) {
-  .map-panel { position: static; width: 100%; margin-top: 1rem; box-shadow: none; }
+  .map-panel { grid-template-columns: 1fr; }
   .axialmap { height: 68vh; }
 }
 

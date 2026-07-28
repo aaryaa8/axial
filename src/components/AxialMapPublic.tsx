@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   SKILLS, LINKS, DOMAINS, LINE_DASH, STRENGTH_STYLE, DIMMED_COLORS,
   TYPE_GLOSS, NODE_RADIUS, computeDegrees,
@@ -69,7 +69,9 @@ const FILTERS: { key: DomainID | null; label: string }[] = [
   ...(Object.entries(DOMAINS) as [DomainID, { short: string }][]).map(([k, v]) => ({ key: k, label: v.short })),
 ];
 
-export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void }) {
+export default function AxialMapPublic(
+  { onOpen, detail }: { onOpen: (s: Placed) => void; detail?: React.ReactNode }
+) {
   const ref = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState({ w: 0, h: 0 });
   const [hover, setHover] = useState<Placed | null>(null);
@@ -224,6 +226,8 @@ export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void
           </div>
         )}
       </div>
+
+      {detail}
 
       <div className="axialmap-legend">
         <span className="axialmap-legend-head">Types</span>

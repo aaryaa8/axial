@@ -10,6 +10,76 @@ export default function MapApp() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
+  const detail = (
+    <aside className="map-panel">
+      {open ? (
+        <>
+          <div className="map-panel-info">
+            <span className="map-panel-domain">{DOMAINS[open.domain].short}</span>
+            <h3 className="map-panel-name">{open.name}</h3>
+            <p className="map-panel-meta">
+              Connected to <b>{open.degree}</b> other{" "}
+              {open.degree === 1 ? "skill" : "skills"} in the map.
+            </p>
+          </div>
+
+          <div className="map-panel-gate">
+            <div className="map-blur">
+              <div className="map-blur-text" aria-hidden="true">
+                <span /><span /><span /><span /><span /><span /><span />
+              </div>
+              <div className="map-blur-over">
+                <p>What this skill means, and how a weakness here shows up in a child's work.</p>
+              </div>
+            </div>
+
+            {sent ? (
+              <p className="map-panel-thanks">
+                You are on the list. We will be in touch as this opens up.
+              </p>
+            ) : (
+              <form
+                className="map-panel-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if (email.trim()) setSent(true);
+                }}
+              >
+                <input
+                  type="email"
+                  required
+                  placeholder="you@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  aria-label="Your email"
+                />
+                <button className="btn btn-primary" type="submit">
+                  Join the waitlist to read it
+                </button>
+              </form>
+            )}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="map-panel-info">
+            <h3 className="map-panel-name">
+              {SKILLS.length} skills, {LINKS.length} connections
+            </h3>
+            <p className="map-panel-meta">
+              The connections are what make this a map instead of a list. They
+              record which skill carries which, so Axial can find the one
+              weakness underneath that explains several others.
+            </p>
+          </div>
+          <div className="map-panel-gate">
+            <p className="map-panel-meta">Click any point on the map to open a skill.</p>
+          </div>
+        </>
+      )}
+    </aside>
+  );
+
   return (
     <div className="page">
       <div className="grain" aria-hidden="true" />
@@ -27,51 +97,7 @@ export default function MapApp() {
         </div>
 
         <div className="map-page-grid">
-          <AxialMapPublic onOpen={setOpen} />
-
-          <aside className="map-panel">
-            {open ? (
-              <>
-                <span className="map-panel-domain">{DOMAINS[open.domain].short}</span>
-                <h3 className="map-panel-name">{open.name}</h3>
-                <p className="map-panel-meta">
-                  Connected to <b>{open.degree}</b> other{" "}
-                  {open.degree === 1 ? "skill" : "skills"} in the map.
-                </p>
-
-                <div className="map-blur">
-                  <div className="map-blur-text" aria-hidden="true">
-                    <span /><span /><span /><span /><span /><span /><span />
-                  </div>
-                  <div className="map-blur-over">
-                    <p>What this skill means, and how a weakness here shows up in a child's work.</p>
-                  </div>
-                </div>
-
-                {sent ? (
-                  <p className="map-panel-thanks">
-                    You are on the list. We will be in touch as this opens up.
-                  </p>
-                ) : (
-                  <form className="map-panel-form" onSubmit={(e) => { e.preventDefault(); if (email.trim()) setSent(true); }}>
-                    <input type="email" required placeholder="you@email.com" value={email}
-                      onChange={(e) => setEmail(e.target.value)} aria-label="Your email" />
-                    <button className="btn btn-primary" type="submit">Join the waitlist to read it</button>
-                  </form>
-                )}
-              </>
-            ) : (
-              <>
-                <h3 className="map-panel-name">{SKILLS.length} skills, {LINKS.length} connections</h3>
-                <p className="map-panel-meta">
-                  The connections are what make this a map instead of a list. They
-                  record which skill carries which, so Axial can find the one
-                  weakness underneath that explains several others.
-                </p>
-                <p className="map-panel-meta">Click any point to open a skill.</p>
-              </>
-            )}
-          </aside>
+          <AxialMapPublic onOpen={setOpen} detail={detail} />
         </div>
 
         <p className="map-note">
