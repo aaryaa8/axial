@@ -1,6 +1,8 @@
 import SiteNav from "./components/SiteNav";
 import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
+import ProductGrid from "./components/ProductGrid";
+import { YOUNG_LEARNERS, WIDER } from "./data/products";
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -40,26 +42,6 @@ const EXAMPLES = [
     q: "“I read it. I don't know.”",
     obs: "The child reads the page smoothly and cannot say what happened in it.",
     cause: "Comprehension monitoring",
-  },
-];
-
-const PRODUCTS = [
-  {
-    name: "Axial Read",
-    status: "Live demo",
-    body: "A reading tutor for four to eight year olds. The child reads aloud, the model finds the skill underneath that is blocking them, and the teaching changes in response.",
-    href: `${BASE}read/`,
-    cta: "See it work",
-  },
-  {
-    name: "Axial for schools",
-    status: "In development",
-    body: "One view of thirty children's cognitive maps, so a teacher can group and target instruction across a whole class.",
-  },
-  {
-    name: "Axial for older learners",
-    status: "Research",
-    body: "The metacognitive layer for students who work hard and underperform, which is where the model began.",
   },
 ];
 
@@ -161,20 +143,11 @@ export default function CompanyApp() {
           </p>
         </div>
 
-        <div className="products">
-          {PRODUCTS.map((p) => (
-            <article className={`product ${p.href ? "is-live" : ""}`} key={p.name}>
-              <span className="product-status">{p.status}</span>
-              <h3 className="product-name">{p.name}</h3>
-              <p className="product-body">{p.body}</p>
-              {p.href && (
-                <a className="product-cta" href={p.href}>
-                  {p.cta} <span aria-hidden="true">→</span>
-                </a>
-              )}
-            </article>
-          ))}
-        </div>
+        <h3 className="group-title">Axial for young learners</h3>
+        <ProductGrid items={YOUNG_LEARNERS} />
+
+        <h3 className="group-title group-title--gap">Beyond one child</h3>
+        <ProductGrid items={WIDER} />
       </section>
 
       <section className="section" id="about">

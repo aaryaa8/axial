@@ -618,12 +618,7 @@ strong, b { font-weight: 700; }
 }
 
 /* ---------- the map page ---------- */
-.map-page-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 52px);
-  align-items: start;
-}
+.map-page-grid { position: relative; }
 .axialmap-wrap { display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
 .axialmap-filters { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .axialmap-filter {
@@ -644,10 +639,7 @@ strong, b { font-weight: 700; }
 .axialmap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
+  height: min(80vh, 900px);
   overflow: hidden;
 }
 .axialmap-svg { display: block; }
@@ -692,12 +684,16 @@ strong, b { font-weight: 700; }
 }
 
 .map-panel {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 300px;
+  z-index: 10;
   background: var(--white);
   border: 1px solid var(--rule);
   border-radius: 6px;
-  padding: 1.6rem 1.5rem;
-  position: sticky;
-  top: 24px;
+  padding: 1.4rem 1.3rem;
+  box-shadow: 0 18px 40px -28px rgba(26, 26, 26, 0.35);
 }
 .map-panel-domain { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 .map-panel-name { font-size: var(--fs-m); font-weight: 700; margin: 0.4rem 0 0.6rem; line-height: 1.25; }
@@ -737,8 +733,8 @@ strong, b { font-weight: 700; }
 .about-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: clamp(28px, 4vw, 44px); }
 
 @media (max-width: 900px) {
-  .map-page-grid { grid-template-columns: 1fr; }
-  .map-panel { position: static; }
+  .map-panel { position: static; width: 100%; margin-top: 1rem; box-shadow: none; }
+  .axialmap { height: 68vh; }
 }
 
 /* ---------- map: tooltip, legend, guide ---------- */
@@ -834,3 +830,12 @@ strong, b { font-weight: 700; }
 
 .bio-link { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .bio-link:hover { opacity: 0.6; }
+
+/* wider, shallower frame so the map itself gets the screen */
+.section--wide { max-width: 1500px; }
+.map-page { padding-top: clamp(26px, 3vw, 44px); padding-bottom: clamp(30px, 4vw, 56px); }
+.map-page .section-head { margin-bottom: clamp(18px, 2vw, 26px); }
+
+/* product groups */
+.group-title { font-size: var(--fs-m); font-weight: 700; margin: 0 0 1rem; }
+.group-title--gap { margin-top: clamp(30px, 4vw, 46px); }

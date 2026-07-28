@@ -15,7 +15,7 @@ export default function MapApp() {
       <div className="grain" aria-hidden="true" />
       <SiteNav current="map" />
 
-      <section className="section map-page">
+      <section className="section section--wide map-page">
         <div className="section-head">
           <h2 className="section-title">The map</h2>
           <p className="section-standfirst">

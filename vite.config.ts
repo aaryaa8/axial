@@ -16,6 +16,7 @@ export default defineConfig({
         about: resolve(__dirname, "about/index.html"),
         products: resolve(__dirname, "products/index.html"),
         arithmetic: resolve(__dirname, "arithmetic/index.html"),
+        write: resolve(__dirname, "write/index.html"),
       },
     },
   },

@@ -92,7 +92,7 @@ export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void
   const degrees = useMemo(() => computeDegrees(LINKS), []);
   const { nodes, cx, cy, R } = useMemo(() => {
     if (!box.w) return { nodes: [] as Placed[], cx: 0, cy: 0, R: 0 };
-    const cx = box.w / 2, cy = box.h / 2, R = Math.min(box.w, box.h) * 0.235;
+    const cx = box.w / 2, cy = box.h / 2, R = Math.min(box.w, box.h) * 0.26;
     return { nodes: placeSkills(domainCentroids(cx, cy, R), degrees, cx, cy, R), cx, cy, R };
   }, [box, degrees]);
 
