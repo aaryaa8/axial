@@ -92,7 +92,7 @@ export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void
   const degrees = useMemo(() => computeDegrees(LINKS), []);
   const { nodes, cx, cy, R } = useMemo(() => {
     if (!box.w) return { nodes: [] as Placed[], cx: 0, cy: 0, R: 0 };
-    const cx = box.w / 2, cy = box.h / 2, R = Math.min(box.w, box.h) * 0.28;
+    const cx = box.w / 2, cy = box.h / 2, R = Math.min(box.w, box.h) * 0.235;
     return { nodes: placeSkills(domainCentroids(cx, cy, R), degrees, cx, cy, R), cx, cy, R };
   }, [box, degrees]);
 
@@ -174,7 +174,7 @@ export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void
             let stroke: string, width: number, opacity: number;
             if (active && connected) {
               stroke = l.strength === "strong" ? "#111111" : "#444444";
-              width = base.width * 1.5; opacity = 1;
+              width = base.width * 1.5; opacity = 0.5;
             } else if (active && !connected) {
               stroke = DIMMED_COLORS[l.strength]; width = base.width; opacity = 0.08;
             } else if (domainDimmed) {
@@ -198,7 +198,8 @@ export default function AxialMapPublic({ onOpen }: { onOpen: (s: Placed) => void
             const isActive = active?.id === n.id;
             const isPeer = peers.has(n.id);
             let opacity = 1;
-            if (active && !isActive && !isPeer) opacity = 0.08;
+            if (active && isPeer && !isActive) opacity = 0.5;
+            else if (active && !isActive && !isPeer) opacity = 0.08;
             else if (domain && n.domain !== domain) opacity = 0.15;
             return (
               <g key={n.id}>

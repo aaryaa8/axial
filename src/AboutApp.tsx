@@ -4,6 +4,37 @@ import DomainConstellation from "./components/DomainConstellation";
 
 const BASE = import.meta.env.BASE_URL;
 
+// Content follows the live Axial about page, carried across into the child and
+// parent framing this site uses.
+const WHO = [
+  {
+    t: "Children",
+    d: "A way of learning that finally fits how they think, and language for what has felt hard, without a label attached.",
+  },
+  {
+    t: "Parents",
+    d: "Understand how your child actually learns, and how to help in a way that fits them. No diagnosis and no pathologising, just a clearer picture and a plan.",
+  },
+  {
+    t: "Teachers",
+    d: "You already know your students learn differently. Axial gives you a precise, practical read on each one, so support matches the child in front of you.",
+  },
+];
+
+const APPLIES = [
+  { t: "Early reading", d: "Find the skill underneath a stall, before a child decides they are bad at reading." },
+  { t: "Learning differences", d: "Built with neurodivergent learners in mind. Two children with the same diagnosis can have very different profiles, and very different needs." },
+  { t: "Tutoring support", d: "A precise starting point, so sessions target the thing that actually moves the needle." },
+  { t: "Classroom teaching", d: "A shared language for how a class learns, so instruction can flex to fit real differences." },
+];
+
+const BEYOND = [
+  { t: "Workplace learning", d: "The same map shows why strong performers plateau and where training will actually land." },
+  { t: "Hiring and talent", d: "A structural read on how someone thinks, adapts under pressure and manages goals, for roles where judgement matters more than a personality label." },
+  { t: "Sport and performance", d: "Attentional control, decision-making and composure are all measurable, which turns vague talk of mental toughness into specific targets." },
+  { t: "High-stakes work", d: "Errors under fatigue come from cognition breaking down while the knowledge is already there. Axial shows what degrades under load." },
+];
+
 export default function AboutApp() {
   useReveal();
   return (
@@ -43,24 +74,23 @@ export default function AboutApp() {
             <h3 className="tile-title">A picture you can act on</h3>
             <p className="tile-body">
               From a short diagnostic, a personal map of how a child handles
-              learning. No score and no label, just something you can do
-              something about on Monday morning.
+              learning. No score and no label, just a picture you can do
+              something about.
             </p>
           </div>
           <div className="tile">
             <h3 className="tile-title">Six domains</h3>
             <p className="tile-body">
               Every skill Axial measures sits inside one of six domains of
-              thinking, feeling and relating, and the links between them show
-              which weakness is causing which.
+              thinking, feeling and relating. The links between them show which
+              weakness is causing which.
             </p>
           </div>
           <div className="tile">
             <h3 className="tile-title">The science underneath</h3>
             <p className="tile-body">
-              Built on sixty years of cognitive science. The skills that shape
-              how a child learns, and how they fit together, drawn from the
-              research psychologists use to understand how people think.
+              Built on sixty years of cognitive science, drawn from the research
+              psychologists use to understand how people think and learn.
             </p>
           </div>
         </div>
@@ -68,33 +98,52 @@ export default function AboutApp() {
 
       <section className="section">
         <div className="section-head">
-          <h2 className="section-title">Where Axial starts, and where it goes</h2>
+          <h2 className="section-title">Useful to everyone helping them</h2>
+        </div>
+        <div className="tiles tiles--3">
+          {WHO.map((w) => (
+            <div className="tile" key={w.t}>
+              <h3 className="tile-title">{w.t}</h3>
+              <p className="tile-body">{w.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <h2 className="section-title">Where it applies today</h2>
           <p className="section-standfirst">
             Axial started with reading, because that is where the mismatch shows
-            up first and hurts most. The same map works anywhere learning and
-            focus matter, and the profile a child builds carries into the rest
-            of their life.
+            up first and hurts most.
           </p>
         </div>
-
         <div className="tiles tiles--2">
-          <div className="tile">
-            <span className="status-tag is-done">Built</span>
-            <h3 className="tile-title">The cognitive model</h3>
-            <p className="tile-body">
-              35 skills across six domains, around a hundred dependencies
-              between them, and a deterministic scoring engine on top.
-            </p>
-          </div>
-          <div className="tile">
-            <span className="status-tag is-wip">In progress</span>
-            <h3 className="tile-title">Everything built on it</h3>
-            <p className="tile-body">
-              The reading tutor works end to end as a demo. The play based
-              intake, the child facing interface, and the consent and safety
-              layer needed before a real child uses it are being built now.
-            </p>
-          </div>
+          {APPLIES.map((a) => (
+            <div className="tile" key={a.t}>
+              <h3 className="tile-title">{a.t}</h3>
+              <p className="tile-body">{a.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-head">
+          <h2 className="section-title">The same map extends past the classroom</h2>
+          <p className="section-standfirst">
+            Anywhere people have to think clearly under pressure. Education is
+            where we are starting, and the profile a child builds carries into
+            the rest of their life.
+          </p>
+        </div>
+        <div className="tiles tiles--2">
+          {BEYOND.map((b) => (
+            <div className="tile tile--soon" key={b.t}>
+              <h3 className="tile-title">{b.t}</h3>
+              <p className="tile-body">{b.d}</p>
+            </div>
+          ))}
         </div>
       </section>
 
