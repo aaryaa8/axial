@@ -2,17 +2,17 @@ const LOOP = [
   {
     n: "01",
     h: "It listens",
-    p: "Your child reads aloud and plays. There is no test to sit. Axial reads how she responds: what she gets, where she slips, when she gives up.",
+    p: "Your child reads aloud and plays. There is no test to sit. Axial reads how the child responds: what they get, where they slip, when they give up.",
   },
   {
     n: "02",
     h: "It understands",
-    p: "From those signals it builds a model of how she learns, and finds the one skill underneath that is holding the rest back.",
+    p: "From those signals it builds a model of how the child learns, and finds the one skill underneath that is holding the rest back.",
   },
   {
     n: "03",
     h: "It teaches",
-    p: "It picks the next thing to teach, and the way to teach it to her, then watches what happens and updates. A good tutor, on a loop.",
+    p: "It picks the next thing to teach, and the way to teach it to them, then watches what happens and updates. A good tutor, on a loop.",
   },
 ];
 
@@ -25,7 +25,7 @@ export default function HowItWorks() {
 
       <div className="twomaps">
         <div className="twomap">
-          <span className="twomap-tag twomap-tag--reading">what she’s learning</span>
+          <span className="twomap-tag twomap-tag--reading">what the child is learning</span>
           <p>
             The reading skills every child moves through, from letter sounds to
             blending to fluent reading. This is the well-charted part, drawn
@@ -36,11 +36,11 @@ export default function HowItWorks() {
           <span>the link between them</span>
         </div>
         <div className="twomap">
-          <span className="twomap-tag twomap-tag--cognitive">how she learns</span>
+          <span className="twomap-tag twomap-tag--cognitive">how the child learns</span>
           <p>
-            The cognitive strengths underneath, like how she hears sounds and
-            how long she can hold them in mind. This is the part that decides how to
-            teach her.
+            The cognitive strengths underneath, like how the child hears sounds
+            and how long they can hold them in mind. This is the part that decides
+            how to teach them.
           </p>
         </div>
       </div>

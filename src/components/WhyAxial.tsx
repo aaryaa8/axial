@@ -30,16 +30,16 @@ const HOW = [
   {
     n: "01",
     h: "It keeps a living model of the child",
-    p: "Not a chat history. A structured map of which skills she has and how they depend on each other, updated every session.",
+    p: "Not a chat history. A structured map of which skills the child has and how they depend on each other, updated every session.",
   },
   {
     n: "02",
     h: "It teaches at the cause, not the symptom",
-    p: "When she stumbles on a word, it locates the upstream skill holding her back and teaches there, the way a good tutor does.",
+    p: "When the child stumbles on a word, it locates the upstream skill holding them back and teaches there, the way a good tutor does.",
   },
   {
     n: "03",
-    h: "The cognitive model decides what she knows",
+    h: "The cognitive model decides what the child knows",
     p: "Claude writes the stories and speaks the words, and the cognitive model decides the teaching. That is why Axial stays consistent and can show its reasons.",
   },
 ];
@@ -51,7 +51,7 @@ export default function WhyAxial() {
         <h2 className="section-title">How Axial compares with a chat based AI tutor</h2>
         <p className="section-standfirst">
           Most products called an AI tutor are a language model in a chat box. They
-          read what a child knows from her last message, pick the next step by
+          read what a child knows from the last message, pick the next step by
           feel, and answer differently each time you ask. For a parent choosing
           a tutor for a young child, that is the whole problem.
         </p>

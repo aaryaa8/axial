@@ -12,6 +12,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         read: resolve(__dirname, "read/index.html"),
+        map: resolve(__dirname, "map/index.html"),
+        about: resolve(__dirname, "about/index.html"),
       },
     },
   },

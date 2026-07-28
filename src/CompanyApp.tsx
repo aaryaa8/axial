@@ -1,11 +1,11 @@
-import { useEffect } from "react";
 import SiteNav from "./components/SiteNav";
+import useReveal from "./useReveal";
 import DomainConstellation from "./components/DomainConstellation";
 
 const BASE = import.meta.env.BASE_URL;
 
 const FACTS = [
-  { k: "30+", v: "cognitive skills", n: "across six domains of thinking, feeling and relating" },
+  { k: "35", v: "cognitive skills", n: "across six domains of thinking, feeling and relating" },
   { k: "100", v: "dependencies", n: "typed links describing which skills carry which" },
   { k: "120", v: "sources", n: "peer reviewed research behind the map" },
 ];
@@ -28,17 +28,17 @@ const PRINCIPLES = [
 const EXAMPLES = [
   {
     q: "“s… u… n… snake?”",
-    obs: "She says every sound correctly and reaches for a different word.",
+    obs: "The child says every sound correctly and reaches for a different word.",
     cause: "Holding sounds in working memory",
   },
   {
     q: "“I knew this yesterday.”",
-    obs: "She has the material and comes apart on anything timed.",
+    obs: "The child has the material and comes apart on anything timed.",
     cause: "Self regulation under pressure",
   },
   {
     q: "“I read it. I don't know.”",
-    obs: "She reads the page smoothly and cannot say what happened in it.",
+    obs: "The child reads the page smoothly and cannot say what happened in it.",
     cause: "Comprehension monitoring",
   },
 ];
@@ -47,7 +47,7 @@ const PRODUCTS = [
   {
     name: "Axial Read",
     status: "Live demo",
-    body: "A reading tutor for four to eight year olds. The child reads aloud, the model finds the skill underneath that is blocking her, and the teaching changes in response.",
+    body: "A reading tutor for four to eight year olds. The child reads aloud, the model finds the skill underneath that is blocking them, and the teaching changes in response.",
     href: `${BASE}read/`,
     cta: "See it work",
   },
@@ -64,27 +64,7 @@ const PRODUCTS = [
 ];
 
 export default function CompanyApp() {
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll(".section"));
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || !("IntersectionObserver" in window)) {
-      sections.forEach((s) => s.classList.add("is-visible"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
-  }, []);
+  useReveal();
 
   return (
     <div className="page">

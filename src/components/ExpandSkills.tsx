@@ -3,7 +3,7 @@ import DomainConstellation from "./DomainConstellation";
 const PATH = [
   { when: "Now", what: "Reading", sub: "Letter sounds through to fluent reading." },
   { when: "Next", what: "Writing and early arithmetic", sub: "The same play-based intake, new skill maps on top." },
-  { when: "As she grows", what: "The six domains of thinking", sub: "Attention, memory, reasoning, planning, feeling, relating." },
+  { when: "As they grow", what: "The six domains of thinking", sub: "Attention, memory, reasoning, planning, feeling, relating." },
   { when: "The horizon", what: "Thinking itself", sub: "The harder things a devoted tutor teaches over years." },
 ];
 
@@ -17,9 +17,9 @@ export default function ExpandSkills() {
       <p className="expand-lede">
         Reading is where we start, because it is early, universal, and the
         moment a parent feels the stakes. Underneath it, the model already spans
-        six domains of thinking, feeling, and relating. Every new skill Maya
+        six domains of thinking, feeling, and relating. Every new skill a child
         meets, writing, arithmetic, and eventually far more, reads from the same
-        map of her mind. The engine stays the same, and the skills taught on top
+        map of the child’s mind. The engine stays the same, and the skills taught on top
         of it widen.
       </p>
 

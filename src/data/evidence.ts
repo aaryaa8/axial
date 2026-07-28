@@ -113,7 +113,7 @@ export const DEPENDENCIES: Dependency[] = [
     to: "blending",
     type: "prerequisite",
     strength: "strong",
-    claim: "A child has to know the letter sounds before she can blend them into a word.",
+    claim: "A child has to know the letter sounds before blending them into a word.",
     cites: ["nrp00", "ehri05"],
   },
   {

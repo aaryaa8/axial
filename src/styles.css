@@ -616,3 +616,136 @@ strong, b { font-weight: 700; }
   * { animation: none !important; transition: none !important; }
   .section { opacity: 1; transform: none; }
 }
+
+/* ---------- the map page ---------- */
+.map-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 52px);
+  align-items: start;
+}
+.axialmap-wrap { display: flex; flex-direction: column; gap: 0.9rem; }
+.axialmap-filters { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.axialmap-filter {
+  font-family: var(--sans);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.axialmap-filter:hover { color: var(--ink); border-color: var(--ink-soft); }
+.axialmap-filter.is-on { background: var(--ink); border-color: var(--ink); color: var(--bg); font-weight: 700; }
+
+.axialmap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.axialmap-svg { display: block; }
+.axialmap-domain {
+  fill: var(--ink-dim);
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.axialmap-link { stroke: #c9c3b8; stroke-width: 0.7; transition: stroke 0.25s, opacity 0.25s; }
+.axialmap-link.is-lit { stroke: var(--ink); stroke-width: 1.3; }
+.axialmap-link.is-dim { opacity: 0.18; }
+
+.axialmap-node { cursor: pointer; }
+.axialmap-hit { fill: transparent; }
+.axialmap-dot { fill: var(--ink-soft); transition: fill 0.2s, r 0.2s; }
+.axialmap-node:hover .axialmap-dot { fill: var(--ink); }
+.axialmap-node.is-active .axialmap-dot { fill: var(--ink); }
+.axialmap-node.is-dim { opacity: 0.25; }
+.axialmap-name {
+  fill: var(--ink);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: var(--white);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.axialmap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  font-size: var(--fs-xs);
+  color: var(--ink-dim);
+  pointer-events: none;
+}
+
+.map-panel {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.6rem 1.5rem;
+  position: sticky;
+  top: 24px;
+}
+.map-panel-domain { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.map-panel-name { font-size: var(--fs-m); font-weight: 700; margin: 0.4rem 0 0.6rem; line-height: 1.25; }
+.map-panel-meta { font-size: var(--fs-s); color: var(--ink-mid); margin: 0 0 0.9rem; line-height: 1.6; }
+.map-panel-meta b { color: var(--ink); }
+
+.map-locked {
+  border: 1px dashed var(--ink-dim);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.1rem;
+  background: var(--bg-warm);
+}
+.map-locked-tag { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.map-locked p { font-size: var(--fs-s); color: var(--ink-mid); margin: 0.5rem 0 0; line-height: 1.6; }
+
+.map-panel-form { display: flex; flex-direction: column; gap: 0.5rem; }
+.map-panel-form input {
+  font-family: var(--sans);
+  font-size: var(--fs-s);
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  width: 100%;
+}
+.map-panel-form .btn { justify-content: center; }
+.map-panel-thanks { font-size: var(--fs-s); font-weight: 700; color: var(--ink); margin: 0; }
+
+.map-note { font-size: var(--fs-s); color: var(--ink-soft); margin: clamp(24px, 3vw, 36px) 0 0; max-width: 640px; }
+
+/* ---------- about page ---------- */
+.about-body { font-size: var(--fs-s); color: var(--ink-mid); line-height: 1.75; margin: 1.1rem 0 0; }
+.status-tag {
+  align-self: flex-start;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+}
+.status-tag.is-done { background: var(--ink); color: var(--bg); }
+.status-tag.is-wip { border: 1px solid var(--ink-dim); color: var(--ink-soft); }
+.about-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: clamp(28px, 4vw, 44px); }
+
+@media (max-width: 900px) {
+  .map-page-grid { grid-template-columns: 1fr; }
+  .map-panel { position: static; }
+}

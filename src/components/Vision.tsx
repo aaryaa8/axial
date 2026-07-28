@@ -14,7 +14,7 @@ export default function Vision() {
 
       <p className="vision-lede">
         The model that teaches a six-year-old to read is the same model that
-        can grow with her for years. It supports teachers across a whole
+        can grow with the child for years. It supports teachers across a whole
         class, and it comes to know one child deeply. That kind of attention has
         always been reserved for the luckiest few, and the point of Axial is to
         give it to every child.
