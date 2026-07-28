@@ -72,7 +72,7 @@ export const CHILD = { name: "Maya", age: 6 };
 export const STEPS: DemoStep[] = [
   {
     kicker: "The child",
-    title: "Meet Maya. She is six, and she is learning to read.",
+    title: "Maya is six years old and learning to read",
     body: "Press play to hear her read three short words aloud. Axial listens to how she works out each word.",
     states: {},
     audio: "s0-intro",
@@ -103,7 +103,7 @@ export const STEPS: DemoStep[] = [
   {
     kicker: "Word 3 of 3",
     title: "“map”",
-    body: "Every sound correct again, and then she asks for the first one back. That is the tell. The sounds are not missing. They fall out of memory before she can join them.",
+    body: "Every sound correct again, and then she asks for the first one back. That is the tell. The sounds arrive correctly and fall out of memory before she can join them.",
     word: "map",
     transcript: "/m/ … /a/ … /p/ … wait, what was the first one?",
     say: "m... a... p... wait, what was the first sound again?",
@@ -113,8 +113,8 @@ export const STEPS: DemoStep[] = [
   },
   {
     kicker: "What Axial notices",
-    title: "The letters are solid. What slips is holding the sounds together.",
-    body: "A drill-app would give Maya more letters. Axial reads the pattern the way a good tutor would: she knows the sounds, so the bottleneck is upstream, in how long she can hold them in mind while she blends. No language model decided this. It is read from how she read.",
+    title: "The sounds are solid, and holding them together is what slips",
+    body: "A drill-app would give Maya more letters. Axial reads the pattern the way a good tutor would: she knows the sounds, so the bottleneck is upstream, in how long she can hold them in mind while she blends. Every part of that reading comes from the rule set, applied to how she read.",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck", holding: "bottleneck", words: "unlock" },
     trail: [
       { from: "holding", to: "blending" },
@@ -123,8 +123,8 @@ export const STEPS: DemoStep[] = [
   },
   {
     kicker: "How the tutor adapts",
-    title: "So it changes what it teaches, and how.",
-    body: "Instead of sounding out whole words, Maya practices joining just two sounds at a time, slower, with the sounds held on screen so she does not have to carry them alone. Clear the bottleneck and reading words opens up next.",
+    title: "The tutor changes what it teaches and how it teaches it",
+    body: "Maya now practices joining just two sounds at a time, slower, with the sounds held on screen so it carries them with her. Clear the bottleneck and reading words opens up next.",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck", holding: "bottleneck", words: "unlock" },
     activity: {
       before: "Sound out the whole word:  s · u · n",
@@ -135,8 +135,8 @@ export const STEPS: DemoStep[] = [
   },
   {
     kicker: "What the parent sees",
-    title: "And it tells you, in plain words, what is happening.",
-    body: "Maya knows her letters. Her next unlock is holding sounds together long enough to blend them, so this week she is playing two-sound games instead of drilling letters she already knows. You should hear her read her first full words soon.",
+    title: "The parent gets the same finding in plain words",
+    body: "Maya knows her letters. Her next unlock is holding sounds together long enough to blend them, so this week she is playing two-sound games. You should hear her read her first full words soon.",
     states: { letters: "mastered", hearing: "mastered", blending: "stuck", holding: "bottleneck", words: "unlock" },
     parent: true,
   },

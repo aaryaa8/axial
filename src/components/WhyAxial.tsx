@@ -39,8 +39,8 @@ const HOW = [
   },
   {
     n: "03",
-    h: "The language model never decides what she knows",
-    p: "It writes the stories and speaks the words. The cognitive model decides the teaching. That is why Axial stays consistent and can show its reasons.",
+    h: "The cognitive model decides what she knows",
+    p: "Claude writes the stories and speaks the words, and the cognitive model decides the teaching. That is why Axial stays consistent and can show its reasons.",
   },
 ];
 
@@ -48,14 +48,12 @@ export default function WhyAxial() {
   return (
     <section className="section why" id="why">
       <div className="section-head">
-        <span className="section-kicker">Why Axial</span>
-        <h2 className="section-title">Most AI tutors guess. Axial knows why.</h2>
+        <h2 className="section-title">How Axial compares with a chat based AI tutor</h2>
         <p className="section-standfirst">
-          Most products called an AI tutor are a language model in a chat box.
-          Fluent, patient, and guessing. It reads what a child knows from her
-          last message, picks the next step by feel, and cannot tell you why.
-          For a parent choosing a tutor for a young child, that is the whole
-          problem.
+          Most products called an AI tutor are a language model in a chat box. They
+          read what a child knows from her last message, pick the next step by
+          feel, and answer differently each time you ask. For a parent choosing
+          a tutor for a young child, that is the whole problem.
         </p>
       </div>
 

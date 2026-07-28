@@ -9,18 +9,15 @@ export default function Vision() {
   return (
     <section className="section vision" id="vision">
       <div className="section-head">
-        <span className="section-kicker">Where this goes</span>
-        <h2 className="section-title">
-          It starts with reading. It does not end there.
-        </h2>
+        <h2 className="section-title">Where the model goes after reading</h2>
       </div>
 
       <p className="vision-lede">
         The model that teaches a six-year-old to read is the same model that
-        can grow with her for years. It supplements teachers rather than
-        replacing them, and it comes to know one child deeply. That kind of
-        attention has always been reserved for the luckiest few. The point of
-        Axial is to give it to every child.
+        can grow with her for years. It supports teachers across a whole
+        class, and it comes to know one child deeply. That kind of attention has
+        always been reserved for the luckiest few, and the point of Axial is to
+        give it to every child.
       </p>
 
       <div className="horizon">

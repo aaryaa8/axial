@@ -9,8 +9,7 @@ export default function Science() {
   return (
     <section className="section science" id="science">
       <div className="section-head">
-        <span className="section-kicker">The science</span>
-        <h2 className="section-title">Every arrow is a finding, not a guess.</h2>
+        <h2 className="section-title">The research behind every connection in the map</h2>
         <p className="section-standfirst">
           The order Axial teaches in comes from decades of reading research: the
           Simple View of Reading, Scarborough’s Reading Rope, and the five

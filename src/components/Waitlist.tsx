@@ -7,7 +7,7 @@ export default function Waitlist() {
   return (
     <section className="section waitlist" id="waitlist">
       <div className="waitlist-card">
-        <h2 className="waitlist-title">One tutor, for every child.</h2>
+        <h2 className="waitlist-title">Early access for your child</h2>
         <p className="waitlist-sub">
           Axial is in early development. Leave your email and we will reach out
           as the first reading tutor opens up.

@@ -30,15 +30,26 @@ export default function CognitiveMap({ states, trail = [] }: Props) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const measure = () => setBox({ w: el.clientWidth, h: el.clientHeight });
+    const measure = () =>
+      setBox((prev) =>
+        prev.w === el.clientWidth && prev.h === el.clientHeight
+          ? prev
+          : { w: el.clientWidth, h: el.clientHeight }
+      );
     measure();
-    if (typeof ResizeObserver === "undefined") {
-      window.addEventListener("resize", measure);
-      return () => window.removeEventListener("resize", measure);
+    // Both listeners on purpose. The observer catches layout changes around the
+    // map, and the window listener covers resizes the observer can miss. If the
+    // svg keeps a stale size, the edges detach from the nodes.
+    window.addEventListener("resize", measure);
+    let ro: ResizeObserver | undefined;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(measure);
+      ro.observe(el);
     }
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    return () => ro.disconnect();
+    return () => {
+      window.removeEventListener("resize", measure);
+      ro?.disconnect();
+    };
   }, []);
 
   const trailSet = new Set(trail.map((t) => `${t.from}->${t.to}`));
@@ -131,11 +142,7 @@ export default function CognitiveMap({ states, trail = [] }: Props) {
               style={{ left: `${n.x}%`, top: `${BAND_Y[n.layer]}%` }}
             >
               <span className="map-dot" />
-              <span
-                className="map-label"
-                /* scale label width with the plot so neighbours never collide */
-                style={{ width: ready ? Math.min(136, box.w * 0.225) : 132 }}
-              >
+              <span className="map-label">
                 {n.label}
                 {n.sub && <span className="map-sub">{n.sub}</span>}
               </span>

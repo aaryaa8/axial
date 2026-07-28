@@ -42,13 +42,10 @@ export default function App() {
 
       <section className="section demo" id="demo">
         <div className="section-head">
-          <span className="section-kicker">See it work</span>
-          <h2 className="section-title">
-            Watch Axial read a child’s mind, live.
-          </h2>
+          <h2 className="section-title">Watch the tutor work with a six year old</h2>
           <p className="section-standfirst">
-            Maya is six. She reads three words aloud. Follow what Axial hears,
-            what it works out, and how it changes its teaching in response.
+            Maya is six years old and reads three words aloud. Follow what Axial
+            hears, what it works out, and how it changes its teaching.
           </p>
         </div>
         <ReadingDemo />

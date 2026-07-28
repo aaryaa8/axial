@@ -20,8 +20,7 @@ export default function HowItWorks() {
   return (
     <section className="section how" id="how">
       <div className="section-head">
-        <span className="section-kicker">How it works</span>
-        <h2 className="section-title">Two maps, working together.</h2>
+        <h2 className="section-title">Two connected maps of your child</h2>
       </div>
 
       <div className="twomaps">
@@ -40,16 +39,16 @@ export default function HowItWorks() {
           <span className="twomap-tag twomap-tag--cognitive">how she learns</span>
           <p>
             The cognitive strengths underneath, like how she hears sounds and
-            how long she can hold them in mind. This is the part no app has
-            modeled, and the part that decides how to teach her.
+            how long she can hold them in mind. This is the part that decides how to
+            teach her.
           </p>
         </div>
       </div>
 
       <p className="how-thesis">
-        The connections between the two maps are the whole product. They are
-        what let Axial name <i>what</i> your child is stuck on, and <i>why</i>,
-        and therefore what to do about it.
+        The connections between the two maps are the whole product. They let Axial
+        name <strong>what your child is stuck on and why</strong>, and therefore
+        what to do about it this week.
       </p>
 
       <div className="loop">

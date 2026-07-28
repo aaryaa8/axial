@@ -11,10 +11,7 @@ export default function ExpandSkills() {
   return (
     <section className="section expand" id="beyond">
       <div className="section-head">
-        <span className="section-kicker">Beyond reading</span>
-        <h2 className="section-title">
-          The same model maps the whole of how a child <em>thinks</em>.
-        </h2>
+        <h2 className="section-title">The same model covers every domain of thinking</h2>
       </div>
 
       <p className="expand-lede">
@@ -22,8 +19,8 @@ export default function ExpandSkills() {
         moment a parent feels the stakes. Underneath it, the model already spans
         six domains of thinking, feeling, and relating. Every new skill Maya
         meets, writing, arithmetic, and eventually far more, reads from the same
-        map of her mind. The engine does not change. Only the skills we teach on
-        top of it do.
+        map of her mind. The engine stays the same, and the skills taught on top
+        of it widen.
       </p>
 
       <div className="domain-ring-wrap">
