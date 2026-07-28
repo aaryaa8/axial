@@ -194,19 +194,55 @@ export default function AboutApp() {
       </section>
 
       {/* 9 — applications */}
-      <div className="ab-panel">
-        <section className="section">
-          <Tag mark="star">Expanding scope</Tag>
-          <h2 className="ab-h2">
-            <span className="ab-h1-light">One map, many</span>
-            <span className="ab-h1-bold">ways to use it.</span>
-          </h2>
-          <h3 className="ab-sub">In education</h3>
-          <List items={IN_EDUCATION} />
-          <h3 className="ab-sub ab-sub--gap">Beyond the classroom</h3>
-          <List items={BEYOND} />
-        </section>
-      </div>
+      <section className="section ab-apps">
+        <div className="ab-apps-head">
+          <div>
+            <Tag mark="pair">Applications</Tag>
+            <h2 className="ab-h2">
+              <span className="ab-h1-light">One map, many</span>
+              <span className="ab-h1-bold">ways to use it.</span>
+            </h2>
+          </div>
+          <p className="ab-item-d">
+            Axial started with reading, because that is where the mismatch shows
+            up first and hurts most. The same map works anywhere learning and
+            focus matter.
+          </p>
+        </div>
+
+        <div className="ab-minilabel">In education</div>
+        <div className="ab-cards">
+          {IN_EDUCATION.map((a) => (
+            <div className="ab-card" key={a.t}>
+              <h3 className="ab-card-t">{a.t}</h3>
+              <p className="ab-card-d">{a.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="ab-warm">
+          <div className="ab-minilabel ab-minilabel--on">Beyond the classroom</div>
+          <p className="ab-warm-lede">
+            The same map extends past the classroom, to anywhere people have to
+            think clearly under pressure: the training room, the clinic, the
+            field. Education is where we are starting, and the profile a child
+            builds carries into the rest of their life.
+          </p>
+          <div className="ab-cards">
+            {BEYOND.map((a) => (
+              <div className="ab-card ab-card--top" key={a.t}>
+                <h3 className="ab-card-t">{a.t}</h3>
+                <p className="ab-card-d">{a.d}</p>
+              </div>
+            ))}
+          </div>
+          <div className="ab-scope">
+            <span className="ab-scope-rule" />
+            <span className="ab-scope-label">Expanding scope</span>
+            <span className="ab-scope-arrow" aria-hidden="true">→</span>
+          </div>
+        </div>
+      </section>
 
       {/* 10 — closing */}
       <section className="section ab-center">

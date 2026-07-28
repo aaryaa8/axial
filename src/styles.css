@@ -1017,3 +1017,71 @@ strong, b { font-weight: 700; }
 @media (prefers-reduced-motion: reduce) {
   .about-node-drift { animation: none; }
 }
+
+/* ---------- about: applications ---------- */
+.ab-apps-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(30px, 4vw, 56px);
+}
+.ab-minilabel {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 1.1rem;
+}
+.ab-minilabel--on { color: var(--ink-soft); }
+
+/* hairline-separated card grid: the 1px gap shows the rule colour through */
+.ab-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+.ab-card {
+  background: var(--white);
+  padding: clamp(24px, 3vw, 40px) clamp(22px, 2.6vw, 36px);
+  transition: background 0.18s;
+}
+.ab-card:hover { background: var(--bg); }
+.ab-card--top { border-top: 2px solid var(--ink); }
+.ab-card-t { font-size: var(--fs-m); font-weight: 700; line-height: 1.2; margin: 0 0 0.6rem; letter-spacing: -0.01em; }
+.ab-card-d { font-size: var(--fs-s); line-height: 1.75; color: var(--ink-soft); margin: 0; }
+
+/* the beyond-the-classroom band runs full width of the section */
+.ab-warm {
+  background: var(--bg-warm);
+  margin-inline: calc(-1 * clamp(22px, 6vw, 90px));
+  padding: clamp(44px, 6vw, 72px) clamp(22px, 6vw, 90px);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.ab-warm .ab-cards { margin-bottom: 0; }
+.ab-warm-lede {
+  font-size: var(--fs-s);
+  line-height: 1.8;
+  color: var(--ink-mid);
+  max-width: 660px;
+  margin: 0 0 2rem;
+}
+.ab-scope { display: flex; align-items: center; gap: 0.8rem; margin-top: clamp(30px, 4vw, 48px); }
+.ab-scope-rule { height: 1px; flex: 1; background: var(--rule); }
+.ab-scope-label {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.ab-scope-arrow { color: var(--ink-dim); font-size: var(--fs-s); }
+
+@media (max-width: 900px) {
+  .ab-apps-head, .ab-cards { grid-template-columns: 1fr; }
+}
