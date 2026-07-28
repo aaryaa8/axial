@@ -1096,3 +1096,6 @@ strong, b { font-weight: 700; }
 .waitlist-card .ab-h1-light { color: #8f887a; }
 .waitlist-card .ab-h1-bold { color: var(--bg); }
 .ab-panel > .section { max-width: var(--maxw); margin-inline: auto; }
+
+/* the facts strip sits tight under the hero */
+.co-facts { padding-top: 0; padding-bottom: clamp(40px, 6vw, 76px); }

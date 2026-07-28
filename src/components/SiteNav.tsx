@@ -23,9 +23,6 @@ export default function SiteNav({ current }: Props) {
         Axial
       </a>
       <div className="sitenav-links">
-        <a className={current === "company" ? "is-current" : ""} href={BASE}>
-          The model
-        </a>
         <a className={current === "map" ? "is-current" : ""} href={`${BASE}map/`}>
           The map
         </a>
