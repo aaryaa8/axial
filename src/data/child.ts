@@ -55,13 +55,19 @@ export const NODES: MapNode[] = [
   { id: "fluency", label: "Fluent reading", scientific: "Reading Fluency", layer: "reading", x: 88, age: "7–9" },
   // Graph B — the capacities underneath (lower band), each under what it feeds
   // These three are Axial canonical skills, named here exactly as the taxonomy
-  // names them so the public map and the engine cannot drift apart. "Holding
+  // names them so the public map and the engine cannot drift apart.
+  //
+  // The plain labels aim at one register: what a teacher or a clinician would
+  // say to a parent. Relatable without being chatty, and precise enough that
+  // the scientific name beside it reads as the same idea rather than a
+  // translation. "Staying with it" failed that test and became "Staying on
+  // task", which is the standard phrase in education and carries no slang. "Holding
   // sounds in mind" is the phonological application of Working Memory rather
   // than a separate construct, which is why the scientific label is the general
   // one and the plain label is the specific thing a parent would recognise.
-  { id: "hearing", label: "Hearing sounds", scientific: "Phonological Processing Awareness", layer: "cognitive", x: 12 },
+  { id: "hearing", label: "Hearing sounds in words", scientific: "Phonological Processing Awareness", layer: "cognitive", x: 12 },
   { id: "holding", label: "Holding sounds in mind", scientific: "Working Memory", layer: "cognitive", x: 37 },
-  { id: "attention", label: "Staying with it", scientific: "Sustained Attention", layer: "cognitive", x: 66 },
+  { id: "attention", label: "Staying on task", scientific: "Sustained Attention", layer: "cognitive", x: 66 },
 ];
 
 // Where the demo child sits on that timeline. At six she is in the move from
