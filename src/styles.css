@@ -368,6 +368,46 @@ strong, b { font-weight: 700; }
 .map-node--cognitive .map-label { top: 13px; }
 .map-sub { font-family: var(--mono); font-size: var(--fs-xs); line-height: 1.25; color: var(--ink-soft); }
 
+/* The map's vocabulary toggle. Plain English by default; the scientific names
+   are Axial's own canonical skill names, so a reader who wants to check us can,
+   and a parent who does not is never made to read two names for one idea. */
+.map-vocab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.9rem 0 0.2rem;
+}
+.map-vocab-head {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-right: 0.2rem;
+}
+.vocab-toggle {
+  font-family: var(--sans);
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  min-height: 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.vocab-toggle.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+}
+.waitlist-thanks--unsent { color: var(--ink-soft); }
+.waitlist-thanks--unsent a { color: var(--ink); text-decoration: underline; }
+
+
 .map-node--dim { opacity: 0.4; }
 .map-node--dim .map-dot { border-style: dashed; border-color: var(--ink-dim); }
 .map-node--mastered .map-dot { background: var(--ink); border-color: var(--ink); }

@@ -26,6 +26,12 @@ interface Props {
 export default function CognitiveMap({ states, trail = [] }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [box, setBox] = useState({ w: 0, h: 0 });
+  // Which vocabulary the node labels use. Plain English is the default because
+  // the reader of this page is a parent deciding whether to trust us, and the
+  // scientific name is the thing they can check us on rather than the thing
+  // they need first. Showing both at once, which is what this map used to do,
+  // asks a parent to read two names for one idea before they know what it is.
+  const [scientific, setScientific] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -143,12 +149,31 @@ export default function CognitiveMap({ states, trail = [] }: Props) {
             >
               <span className="map-dot" />
               <span className="map-label">
-                {n.label}
-                {n.sub && <span className="map-sub">{n.sub}</span>}
+                {scientific && n.scientific ? n.scientific : n.label}
               </span>
             </div>
           );
         })}
+      </div>
+
+      <div className="map-vocab">
+        <span className="map-vocab-head">names</span>
+        <button
+          type="button"
+          className={`vocab-toggle${scientific ? "" : " is-on"}`}
+          onClick={() => setScientific(false)}
+          aria-pressed={!scientific}
+        >
+          plain English
+        </button>
+        <button
+          type="button"
+          className={`vocab-toggle${scientific ? " is-on" : ""}`}
+          onClick={() => setScientific(true)}
+          aria-pressed={scientific}
+        >
+          scientific
+        </button>
       </div>
 
       <div className="map-legend">
