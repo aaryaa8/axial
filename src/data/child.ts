@@ -15,8 +15,20 @@ export type Layer = "reading" | "cognitive";
 
 export interface MapNode {
   id: string;
+  /** Plain English, for a parent. The default the map shows. */
   label: string;
-  sub?: string; // technical term, shown small + mono
+  /**
+   * The scientific name, revealed by the map's vocabulary toggle.
+   *
+   * For the cognitive band these are Axial's own canonical skill names, so the
+   * public map and the engine call the same construct the same thing. They are
+   * names only: skill ids stay internal (DEC-021), so no S-number appears here.
+   *
+   * For the reading band these are the standard terms from the reading
+   * literature rather than Axial constructs, because that progression is drawn
+   * from published reading science.
+   */
+  scientific?: string;
   layer: Layer;
   x: number; // percent across the plot
   age?: string; // reading band only: the typical age this skill lands
@@ -37,14 +49,25 @@ export const BAND_Y: Record<Layer, number> = { reading: 41, cognitive: 75 };
 // the map is a developmental timeline, not an arbitrary scatter.
 export const NODES: MapNode[] = [
   // Graph A — the reading sequence (top band)
-  { id: "letters", label: "Letter sounds", layer: "reading", x: 12, age: "4–5" },
-  { id: "blending", label: "Blending", layer: "reading", x: 37, age: "5–6" },
-  { id: "words", label: "Reading words", layer: "reading", x: 63, age: "6–7" },
-  { id: "fluency", label: "Fluent reading", layer: "reading", x: 88, age: "7–9" },
+  { id: "letters", label: "Letter sounds", scientific: "Letter-sound knowledge", layer: "reading", x: 12, age: "4–5" },
+  { id: "blending", label: "Blending", scientific: "Phonemic blending", layer: "reading", x: 37, age: "5–6" },
+  { id: "words", label: "Reading words", scientific: "Word recognition", layer: "reading", x: 63, age: "6–7" },
+  { id: "fluency", label: "Fluent reading", scientific: "Reading Fluency", layer: "reading", x: 88, age: "7–9" },
   // Graph B — the capacities underneath (lower band), each under what it feeds
-  { id: "hearing", label: "Hearing sounds", sub: "phonemic awareness", layer: "cognitive", x: 12 },
-  { id: "holding", label: "Holding sounds in mind", sub: "phonological working memory", layer: "cognitive", x: 37 },
-  { id: "attention", label: "Staying with it", sub: "sustained attention", layer: "cognitive", x: 66 },
+  // These three are Axial canonical skills, named here exactly as the taxonomy
+  // names them so the public map and the engine cannot drift apart.
+  //
+  // The plain labels aim at one register: what a teacher or a clinician would
+  // say to a parent. Relatable without being chatty, and precise enough that
+  // the scientific name beside it reads as the same idea rather than a
+  // translation. "Staying with it" failed that test and became "Staying on
+  // task", which is the standard phrase in education and carries no slang. "Holding
+  // sounds in mind" is the phonological application of Working Memory rather
+  // than a separate construct, which is why the scientific label is the general
+  // one and the plain label is the specific thing a parent would recognise.
+  { id: "hearing", label: "Hearing sounds in words", scientific: "Phonological Processing Awareness", layer: "cognitive", x: 12 },
+  { id: "holding", label: "Holding sounds in mind", scientific: "Working Memory", layer: "cognitive", x: 37 },
+  { id: "attention", label: "Staying on task", scientific: "Sustained Attention", layer: "cognitive", x: 66 },
 ];
 
 // Where the demo child sits on that timeline. At six she is in the move from
